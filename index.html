@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Salary Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Salary<span>Calculator</span></h1>
+      <form>
+        <div class="results-container">
+          <label>Annually: <span class="annual-result">0.00</span></label>
+          <label>Monthly: <span class="monthly-result">0.00</span></label>
+          <label>Weekly: <span class="weekly-result">0.00</span></label>
+          <label>Hourly: <span class="hourly-result">0.00</span></label>
+        </div>
+        <div class="input-container">
+          <input type="number" placeholder="Enter pay..." class="main-input" />
+          <div class="radio-group">
+            <label class="radio">
+              <span class="radio-input">
+                <input type="radio" id="annual" name="wage" value="annual" />
+                <span class="radio-control"></span>
+              </span>
+              <span class="radio-label">Annual</span>
+            </label>
+
+            <label class="radio">
+              <span class="radio-input">
+                <input type="radio" id="hourly" name="wage" value="hourly" />
+                <span class="radio-control"></span>
+              </span>
+              <span class="radio-label">Hourly</span>
+            </label>
+          </div>
+        </div>
+        <button type="button" class="btn" id="calc">
+          <i class="fas fa-calculator"></i>Calculate
+        </button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
