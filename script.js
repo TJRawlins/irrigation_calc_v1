@@ -43,9 +43,10 @@ function addNewCard() {
                                   <i class="fa-solid fa-tree"></i>
                                   <h2>Please enter plant name:</h2>
                                   <input type="text" id="name-field">
+                                  <button id="add-name-btn">ADD</button>
                                   <i class="fas fa-times exit"></i>
                                 </div>
-                            </div>`;
+                              </div>`;
   body.appendChild(newInputModalDiv);
 
   document
@@ -232,27 +233,31 @@ setInterval(()=> {
 // EDIT INPUT FIELDS
 document.addEventListener("click", ()=> {
   
-  // INPUT CONTAINERS TARGET
-  let inputContainer = targetContainer.getElementsByClassName('input-container')[0];
-  let savedContainer = targetContainer.getElementsByClassName('input-container')[1];
-  console.log(inputContainer);
-  console.log(savedContainer);
+  try {
+    // INPUT CONTAINERS TARGET
+    let inputContainer = targetContainer.getElementsByClassName('input-container')[0];
+    let savedContainer = targetContainer.getElementsByClassName('input-container')[1];
+    console.log(inputContainer);
+    console.log(savedContainer);
 
-  // ADD SAVED VALUES TO INPUT CONTAINER FIELDS
-  targetContainer.getElementsByClassName('input-field')[0].value = targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML
-  targetContainer.getElementsByClassName('input-field')[1].value = targetContainer.getElementsByClassName('saved-input-field')[1].innerHTML
-  targetContainer.getElementsByClassName('input-field')[2].value = targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML
-  targetContainer.getElementsByClassName('input-field')[3].value = targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML
-  targetContainer.getElementsByClassName('input-field')[4].value = targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML
-  
+    // ADD SAVED VALUES TO INPUT CONTAINER FIELDS
+    targetContainer.getElementsByClassName('input-field')[0].value = targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML
+    targetContainer.getElementsByClassName('input-field')[1].value = targetContainer.getElementsByClassName('saved-input-field')[1].innerHTML
+    targetContainer.getElementsByClassName('input-field')[2].value = targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML
+    targetContainer.getElementsByClassName('input-field')[3].value = targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML
+    targetContainer.getElementsByClassName('input-field')[4].value = targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML
+    
 
-  if(targetEl.classList.contains('saved-edit')) {
+    if(targetEl.classList.contains('saved-edit')) {
 
-    // HIDE/SHOW INPUT CONTAINER
-    inputContainer.classList.toggle("active")
+      // HIDE/SHOW INPUT CONTAINER
+      inputContainer.classList.toggle("active")
 
-    // HIDE/SHOW INPUT CONTAINER
-    savedContainer.classList.toggle("active")
+      // HIDE/SHOW INPUT CONTAINER
+      savedContainer.classList.toggle("active")
+    }
+  } catch {
+    console.log('Element not found');
   }
 });
 
