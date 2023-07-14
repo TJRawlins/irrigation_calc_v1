@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
 :root {
-  --gradient-primary: rgb(255, 113, 19);
-  --gradient-secondary: rgb(205, 255, 23);
+  --gradient-primary: rgb(14, 64, 122);
+  --gradient-secondary: rgb(39, 188, 199);
+  --button: #c5c5c5;
+  --button-hover: #1a6c92;
+  --button-hover-gray: #aaaaaa;
   --text-primary-color: rgb(255, 255, 255);
   --text-secondary-color: rgb(192, 192, 192);
-  --text-btn-color: rgb(70, 13, 97);
+  --light-gray: rgb(234, 234, 234);
+  --bg-primary: #333;
+  --bg-secondary: #222;
 }
 
 * {
@@ -21,21 +26,101 @@ body {
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   overflow: hidden;
 }
 
-.container {
+/* ------------ NAVBAR ------------- */
+
+#navbar-container {
+  display: flex;
+  justify-content: space-between;
   position: relative;
-  background-color: #333;
-  padding: 20px 40px;
-  /* border-radius: 5px; */
-  /* border: rgb(7, 40, 61) 1px solid; */
+  width: 100%;
+  background-color: var(--bg-secondary);
+  padding: 15px;
+  box-shadow: 0px 5px 5px #555;
 }
 
-.container::before {
+#navbar-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+  background-image: linear-gradient(
+    to right,
+    var(--gradient-primary),
+    var(--gradient-secondary)
+  );
+}
+
+#navbar-container h1 i {
+  color: var(--gradient-secondary);
+}
+
+#navbar-container h1 span {
+  font-weight: 100;
+}
+
+#total-container {
+  margin-right: 10px;
+}
+
+#total-container ul {
+  display: flex;
+  list-style-type: none;
+}
+
+#total-container ul li {
+  margin: 0 0.5rem;
+  padding: 0.25rem 0.8rem;
+  background-color: var(--button);
+  color: var(--bg-primary);
+  border: 1px solid var(--gradient-secondary);
+  border-radius: 20px;
+  font-weight: 800;
+}
+
+#total-container ul li .total-amount {
+  color: var(--button-hover);
+}
+
+
+
+/* -------------- MAIN CONTAINER -------------- */
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 1.25rem;
+  overflow: auto;
+}
+
+#card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none
+}
+
+
+/* -------------- CARD CONTAINER -------------- */
+
+.card-container {
+  position: relative;
+  width: 350px;
+  background-color: #333;
+  padding: 20px 20px;
+  margin: 1rem 0.5rem;
+  height: fit-content;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.card-container::before {
   content: "";
   position: absolute;
   top: 0;
@@ -47,143 +132,383 @@ body {
   );
   width: 100%;
   height: 5px;
+  border-radius: 5px 5px 0 0;
 }
 
-.container h1 {
-  font-size: 1.5rem;
+.card-container form {
+  display: block;
+}
+
+.active {
+  display: none !important;
+}
+
+.card-container h1 {
+  font-size: 1.25rem;
   text-align: left;
-  margin-bottom: 1.5rem;
 }
 
-.container h1 span {
+.card-container i {
+  margin-right: 0.5rem;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.card-container h1 span {
   font-weight: lighter;
 }
 
+
 .results-container {
-  display: flex;
+  display: none;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 15px;
+  margin-top: .5rem;
 }
 
 .results-container label {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.25);
   padding: 5px 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .results-container label span {
   position: absolute;
   top: 10%;
-  left: 35%;
+  left: 65%;
   font-weight: normal;
-  color: var(--text-secondary-color);
+  color: #fff;
 }
+
+/* INPUT CONTAINER */
 
 .input-container {
   display: flex;
+  margin: 1rem 0;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
-.input-container .main-input {
+.input-container input {
   background-color: transparent;
   border: 0;
-  border-bottom: var(--text-primary-color) 1px solid;
-  font-size: 18px;
-  color: var(--text-primary-color);
+  border-bottom: 2px dotted var(--button-hover);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--button-hover);
   margin-right: 1rem;
-  /* margin-bottom: 1rem; */
-  padding: 0.5rem 0.2rem;
+  width: 100%;
+  padding: 0.25rem 0.2rem;
 }
 
-.input-container .main-input::placeholder {
-  color: var(--text-secondary-color);
+.input-container input::placeholder {
+  color: #b4b4b4;
+  font-weight: 100;
 }
 
-.input-container .main-input:focus,
+.input-container input:focus,
 .btn:focus {
   outline: none;
 }
 
-.input-container .radio-group {
-  display: grid;
-  grid-gap: 0.5rem;
-}
+#text-input label {
+  font-size: 0.8rem;
+  margin-left: -110px;
+  color: black;
+} 
 
-.input-container .radio-group .radio {
-  font-size: 18px;
-  color: var(--text-secondary-color);
-  display: grid;
-  grid-template-columns: min-content auto;
-  grid-gap: 0.5em;
-}
+/* INPUT SAVED CONTAINER */
 
-.input-container .radio-group input {
-  opacity: 0.5;
-  width: 0;
-  height: 0;
-}
-
-.radio-control {
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  border: 2px solid var(--text-primary-color);
-  transform: translateY(-0.05rem);
-}
-
-.radio-input {
+.input-container.saved {
+  position: relative;
   display: flex;
+  margin: 1rem 0;
+  background-color: #333;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
 }
 
-.radio-input input:checked + .radio-control {
-  /* background: radial-gradient(lightblue 50%, rgba(255, 0, 0, 0) 51%); */
-  background-image: radial-gradient(
-    var(--gradient-primary),
-    var(--gradient-secondary)
-  );
+.input-container.saved .saved-edit {
+  display: none;
 }
 
-.radio-label {
-  line-height: 1;
+.input-container.saved:hover .saved-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  font-weight: 800;
+  content: "CLICK TO EDIT";
+  color: var(--text-primary-color);
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.226);
+  border-radius: 5px;
+
+}
+
+.input-container.saved #saved-input{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+.input-container.saved #saved-input .saved-input-field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  color: var(--gradient-secondary);
+  width: 50%;
+  font-size: 14px;
+  font-weight: 800;
+  border-bottom: 2px dotted ;
+  padding: 0.25rem 0.2rem;
+}
+
+.input-container.saved #saved-input label {
+  font-size: 0.8rem;
+  font-weight: 100;
+  text-align: center;
+}
+
+
+/* -------------- BUTTON CONTAINER -------------- */
+
+#navbar-container button {
+  background-color: transparent;
+  color: var(--gradient-secondary);
+  font-size: 18px;
+  padding: 0 1rem;
+  border: 1px solid var(--gradient-secondary);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+#navbar-container button:hover {
+  transform: scale(1.05);
+}
+
+#navbar-container button:active {
+  transform: scale(.95);
+}
+
+.main-container button#add-new {
+  display: flex;
+  padding: 2.3rem;
+  max-height: 10px;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button);
+  cursor: pointer;
+}
+
+.main-container button#add-new:hover {
+  background-color: var(--button-hover-gray);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.main-container button#add-new i {
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+/* COLLAPSE BUTTON */
+.card-container .collapse {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.card-container .collapse i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: .5rem;
 }
 
 .btn {
   position: relative;
-  width: 100%;
-  padding: 10px 20px;
-  margin-top: 1rem;
-  background-image: linear-gradient(
-    to left,
-    var(--gradient-primary),
-    var(--gradient-secondary)
-  );
-  border: #777 1px solid;
-  border-radius: 25px;
-  color: var(--text-btn-color);
+  background-color: var(--button);
+  border: none;
+  color: #033c6b;
   font-size: 20px;
+  transition: opacity 250ms ease;
   cursor: pointer;
+  border-radius: 5px;
 }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.15) 50%,
-    transparent 50%
-  );
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-}
 
 .btn:active {
   transform: scale(0.98);
 }
 
+.btn:hover {
+  background-color: var(--button-hover);
+  text-shadow: 2px 2px #5e5e5e;
+
+}
+
 .btn i {
   margin-right: 0.45rem;
   font-size: 18px;
+  color: rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 2.5rem;
+}
+
+.btn:hover i {
+  color: var(--text-primary-color);
+}
+
+/* -------------- MODAL CONTAINER -------------- */
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+.modal-container #invalid-input, .modal-container #new-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-secondary);
+  width: fit-content;
+  border-radius: 5px;
+  padding: 1rem;
+  border: 1px #555 solid;
+}
+
+.modal-container #invalid-input::before, .modal-container #new-input::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to right,
+    var(--gradient-primary),
+    var(--gradient-secondary)
+  );
+  width: 100%;
+  height: 5px;
+  border-radius: 5px 5px 0 0;
+}
+
+.modal-container #invalid-input i.alert, .modal-container #new-input i.fa-tree {
+  font-size: 2rem;
+  margin-right: 1.5rem;
+}
+
+.modal-container #invalid-input i.alert {
+  color: orange;
+}
+
+
+.modal-container #invalid-input i.exit:hover {
+  color: #777;
+}
+
+.modal-container #invalid-input h2 {
+  font-size: 1.25rem;
+  padding-right: 2rem;
+}
+
+/* NEW INPUT MODAL */
+
+.modal-container #new-input {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.modal-container #new-input i.fa-tree {
+  color: green;
+}
+
+.modal-container #new-input #name-field {
+  height: 2rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1.5rem;
+  border: none;
+}
+
+.modal-container #new-input #name-field:focus {
+  outline: none;
+}
+
+.modal-container #invalid-input i.exit, #new-input i.exit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #555;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+
+/* -------------- MEDIA QUERIES -------------- */
+
+@media screen and (max-width: 700px) {
+  #navbar-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .card-container {
+    width: 85vw;
+  }
+
+  #total-container ul {
+    margin-top: 0.5rem;
+  }
+
+  .total-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
+  .btn-container .btn i {
+    padding: 0.7rem 1.9rem;
+    font-size: 20px;
+  }
 }

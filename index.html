@@ -4,47 +4,100 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    />
+    <script src="https://kit.fontawesome.com/8dfc375738.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
-    <title>Salary Calculator</title>
+    <title>Water Calculator</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Salary<span>Calculator</span></h1>
-      <form>
-        <div class="results-container">
-          <label>Annually: <span class="annual-result">0.00</span></label>
-          <label>Monthly: <span class="monthly-result">0.00</span></label>
-          <label>Weekly: <span class="weekly-result">0.00</span></label>
-          <label>Hourly: <span class="hourly-result">0.00</span></label>
-        </div>
-        <div class="input-container">
-          <input type="number" placeholder="Enter pay..." class="main-input" />
-          <div class="radio-group">
-            <label class="radio">
-              <span class="radio-input">
-                <input type="radio" id="annual" name="wage" value="annual" />
-                <span class="radio-control"></span>
-              </span>
-              <span class="radio-label">Annual</span>
-            </label>
 
-            <label class="radio">
-              <span class="radio-input">
-                <input type="radio" id="hourly" name="wage" value="hourly" />
-                <span class="radio-control"></span>
-              </span>
-              <span class="radio-label">Hourly</span>
-            </label>
-          </div>
-        </div>
-        <button type="button" class="btn" id="calc">
-          <i class="fas fa-calculator"></i>Calculate
-        </button>
-      </form>
+    <!-- <div class="modal-container">
+      <div id="new-input">
+        <i class="fa-solid fa-tree"></i>
+        <h2>Please enter plant name:</h2>
+        <input type="text" id="name-field">
+      </div>
+    </div> -->
+
+    <nav id="navbar-container">
+      <div id="title">
+        <h1><i class="fa-solid fa-water"></i> Irrigation <span>Calculator</span></h1>
+      </div>
+      <div id="total-container">
+        <ul>
+          <li class="total-item">Month:
+            <label for="month" id="total-month">0.00</label>
+          </li>
+          <li class="total-item">Year:
+            <label for="year" id="total-year">0.00</label>
+          </li>
+            <button id="add-new"><i class="fa-solid fa-plus"></i></button>
+            <button><i class="fa-solid fa-save"></i></button>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTAINER START -->
+    <div class="main-container">
+
+      <!-- ADD NEW BUTTON -->
+      <!-- <button id="add-new"><i class="fa-solid fa-plus"></i></button> -->
+
+      <ul id="card-list">
+
+        <!-- <li>
+          <div class="card-container" id="Fig Trees">
+            <h1><i class="fa-solid fa-tree"></i>  <span>Fig Trees</span><button class="collapse"><i class="fa-solid fa-angle-right"></i></button></h1>
+            <form class="card-form">
+              <div class="results-container">
+                <label>Yearly: <span id="yearly" class="result-label">0.00</span></label>
+                <label>Monthly: <span id="monthly" class="result-label">5.10</span></label>
+                <label>Weekly: <span class="result-label">0.00</span></label>
+                <label>Per Runtime: <span class="result-label">0.00</span></label>
+                <label>Per Minute:  <span class="result-label">0.00</span></label>
+                <label>Per Emitter GPM: <span class="result-label">0.00</span></label>
+              </div>
+              <div class="input-container">
+                <div id="text-input">
+                  <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input"/>
+                  <label for="">Gals / Plant</label>
+                  <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input"/>
+                  <label for="">Emitter Ct.</label>
+                  <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
+                  <label for="">Plant Ct.</label>
+                  <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input"/>
+                  <label for="">Minutes</label>
+                  <input type="number" placeholder="Times per week..." class="input-field" id="times-input"/>
+                  <label for="">Per week</label>
+                </div>
+              </div>
+              <div class="input-container saved active">
+                <div id="saved-input">
+                  <div class="saved-input-field">0</div><label>Gals per plant</label>
+                  <div class="saved-input-field">0</div><label>Emitter Ct.</label>
+                  <div class="saved-input-field">0</div><label>Plant Ct.</label>
+                  <div class="saved-input-field">0</div><label>Minutes</label>
+                  <div class="saved-input-field">0</div><label>Per week</label>
+                  <div class="saved-edit">CLICK TO EDIT</div>
+                </div>
+              </div>
+              <div class="btn-container">
+                <button type="button" class="btn" id="calc">
+                  <i class="fa-solid fa-calculator"></i>
+                </button>
+                <button type="button" class="btn" id="clear">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button type="button" class="btn" id="clear">
+                  <i class="fa-solid fa-save"></i>
+                </button>
+              </div>
+            </form>
+          </div>          
+        </li> -->
+
+      </ul>
+
+      <!-- MAIN CONTAINER END -->
     </div>
     <script src="script.js"></script>
   </body>
