@@ -7,6 +7,9 @@ const btnAddNew = document.getElementById("add-new")
 const cardList = document.getElementById("card-list")
 const totalMonth = document.getElementById("total-month")
 const totalYear = document.getElementById("total-year")
+const addModal = document.getElementById('add-modal')
+const exitBtn = document.querySelector('i.exit')
+const addNameBtn = document.getElementById('add-name-btn')
 
 
 /* -------------- GET TARGET ELEMENT -------------- */
@@ -35,101 +38,94 @@ document.addEventListener("click", (e)=> {
 
 /* -------------- FUNCTIONS --------------- */
 
+// ADD MODAL PROMPT
+function showAddModal() {
+  addModal.classList.toggle('active')
+}
+
 // ADD NEW CARD
 function addNewCard() {
-  const newInputModalDiv = document.createElement("div");
-  newInputModalDiv.innerHTML = `<div class="modal-container">
-                                <div id="new-input">
-                                  <i class="fa-solid fa-tree"></i>
-                                  <h2>Please enter plant name:</h2>
-                                  <input type="text" id="name-field">
-                                  <button id="add-name-btn">ADD</button>
-                                  <i class="fas fa-times exit"></i>
-                                </div>
-                              </div>`;
-  body.appendChild(newInputModalDiv);
+  // SHOW AND HIDE MODAL
+  showAddModal()
+  exitBtn.addEventListener('click', showAddModal);  
 
-  document
-        .querySelector("i.exit")
-        .addEventListener("click", () => newInputModalDiv.remove());
-
+  // SET INPUT TO EMPTY STRING
   let cardTitle = "";
 
   // ADD CARD
-  document.addEventListener("keyup", (event) => {
-    if (event.code === 'Enter') {
-      if (document.getElementById("name-field").value == "") {
-        alert("Please enter a plant name.")
-      } else {
-        cardTitle = document.getElementById("name-field").value
-        document.querySelector(".modal-container").remove()
+  addNameBtn.addEventListener("click", () => {
+    if (document.getElementById("name-field").value == "") {
+      alert("Please enter a plant name.")
+    } else {
+      cardTitle = document.getElementById("name-field").value
+      document.querySelector(".modal-container").remove()
 
-        const newListItem = document.createElement("li")
-        const newCard = document.createElement("div");
-        newCard.classList.add('card-container')
-        
-        let cardId = cardTitle.replace(/\s/g, '-')
-        newCard.setAttribute("id",`${cardId.toLowerCase()}`)
+      const newListItem = document.createElement("li")
+      const newCard = document.createElement("div");
+      newCard.classList.add('card-container')
+      
+      let cardId = cardTitle.replace(/\s/g, '-')
+      newCard.setAttribute("id",`${cardId.toLowerCase()}`)
 
-         newCard.innerHTML = `<h1><i class="fa-solid fa-tree"></i>  <span>${cardTitle}</span><button class="collapse"><i class="fa-solid fa-angle-right"></i></button></h1>
-                              <form class="card-form">
-                            
-                                <!-- RESULTS CONTAINER -->
-                                <div class="results-container">
-                                  <label>Yearly: <span id="yearly" class="result-label">0.00</span></label>
-                                  <label>Monthly: <span id="monthly" class="result-label">0.00</span></label>
-                                  <label>Weekly: <span class="result-label">0.00</span></label>
-                                  <label>Per Runtime: <span class="result-label">0.00</span></label>
-                                  <label>Per Minute:  <span class="result-label">0.00</span></label>
-                                  <label>Per Emitter GPM: <span class="result-label">0.00</span></label>
+        newCard.innerHTML = `<h1><i class="fa-solid fa-tree"></i>  <span>${cardTitle}</span><button class="collapse"><i class="fa-solid fa-angle-right"></i></button></h1>
+                            <form class="card-form">
+                          
+                              <!-- RESULTS CONTAINER -->
+                              <div class="results-container">
+                                <label>Yearly: <span id="yearly" class="result-label">0.00</span></label>
+                                <label>Monthly: <span id="monthly" class="result-label">0.00</span></label>
+                                <label>Weekly: <span class="result-label">0.00</span></label>
+                                <label>Per Runtime: <span class="result-label">0.00</span></label>
+                                <label>Per Minute:  <span class="result-label">0.00</span></label>
+                                <label>Per Emitter GPM: <span class="result-label">0.00</span></label>
+                              </div>
+                          
+                              <!-- TEXT INPUT -->
+                              <div class="input-container">
+                                <div id="text-input">
+                                  <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input" required/>
+                                  <label for="">Gals / Plant</label>
+                                  <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input" required/>
+                                  <label for="">Emitter Ct.</label>
+                                  <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
+                                  <label for="">Plant Ct.</label>
+                                  <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input" required/>
+                                  <label for="">Minutes</label>
+                                  <input type="number" placeholder="Times per week..." class="input-field" id="times-input" required/>
+                                  <label for="">Per week</label>
                                 </div>
-                            
-                                <!-- TEXT INPUT -->
-                                <div class="input-container">
-                                  <div id="text-input">
-                                    <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input" required/>
-                                    <label for="">Gals / Plant</label>
-                                    <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input" required/>
-                                    <label for="">Emitter Ct.</label>
-                                    <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
-                                    <label for="">Plant Ct.</label>
-                                    <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input" required/>
-                                    <label for="">Minutes</label>
-                                    <input type="number" placeholder="Times per week..." class="input-field" id="times-input" required/>
-                                    <label for="">Per week</label>
-                                  </div>
-                                </div>
+                              </div>
 
-                                <!-- TEXT INPUT SAVED -->
-                                <div class="input-container saved active">
-                                  <div id="saved-input">
-                                    <div class="saved-input-field"></div><label>Gals per plant</label>
-                                    <div class="saved-input-field"></div><label>Emitter Ct.</label>
-                                    <div class="saved-input-field"></div><label>Plant Ct.</label>
-                                    <div class="saved-input-field"></div><label>Minutes</label>
-                                    <div class="saved-input-field"></div><label>Per week</label>
-                                    <div class="saved-edit">CLICK TO EDIT</div>
-                                  </div>
+                              <!-- TEXT INPUT SAVED -->
+                              <div class="input-container saved active">
+                                <div id="saved-input">
+                                  <div class="saved-input-field"></div><label>Gals per plant</label>
+                                  <div class="saved-input-field"></div><label>Emitter Ct.</label>
+                                  <div class="saved-input-field"></div><label>Plant Ct.</label>
+                                  <div class="saved-input-field"></div><label>Minutes</label>
+                                  <div class="saved-input-field"></div><label>Per week</label>
+                                  <div class="saved-edit">CLICK TO EDIT</div>
                                 </div>
-                            
-                                <!-- BUTTONS -->
-                                <div class="btn-container">
-                                  <button type="button" class="btn" id="calc">
-                                    <i class="fa-solid fa-calculator"></i>
-                                  </button>
-                                  <button type="button" class="btn" id="clear">
-                                    <i class="fa-solid fa-trash"></i>
-                                  </button>
-                                  <button type="button" class="btn" id="clear">
-                                    <i class="fa-solid fa-save"></i>
-                                  </button>
-                                </div>
-                              </form>`;
-        newListItem.appendChild(newCard)
-        cardList.appendChild(newListItem)
-        cardTitle = "";
-      }
+                              </div>
+                          
+                              <!-- BUTTONS -->
+                              <div class="btn-container">
+                                <button type="button" class="btn" id="calc">
+                                  <i class="fa-solid fa-calculator"></i>
+                                </button>
+                                <button type="button" class="btn" id="clear">
+                                  <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <button type="button" class="btn" id="clear">
+                                  <i class="fa-solid fa-save"></i>
+                                </button>
+                              </div>
+                            </form>`;
+      newListItem.appendChild(newCard)
+      cardList.appendChild(newListItem)
+      cardTitle = "";
     }
+    
   });
 }
 
@@ -257,7 +253,7 @@ document.addEventListener("click", ()=> {
       savedContainer.classList.toggle("active")
     }
   } catch {
-    console.log('Element not found');
+    console.log('EDIT INPUT FIELDS: Element not found');
   }
 });
 

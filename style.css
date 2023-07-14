@@ -466,6 +466,7 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
   border: none;
+  border-radius: 5px;
 }
 
 .modal-container #new-input #name-field:focus {
@@ -480,14 +481,9 @@ body {
   margin-right: 1.5rem;
   border: none;
   border-radius: 5px;
-  color: var(--button-hover);
-  background-color: var(--button);
-  cursor: pointer;
-}
-
-.modal-container #new-input #add-name-btn:hover {
   background-color: var(--button-hover);
   color: #fff;
+  cursor: pointer;
 }
 
 .modal-container #invalid-input i.exit, #new-input i.exit {
