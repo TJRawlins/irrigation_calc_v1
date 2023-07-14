@@ -10,13 +10,13 @@
   </head>
   <body>
 
-    <!-- <div class="modal-container">
-      <div id="new-input">
-        <i class="fa-solid fa-tree"></i>
-        <h2>Please enter plant name:</h2>
-        <input type="text" id="name-field">
+    <div class="modal-container active" id="error-modal">
+      <div id="invalid-input">
+        <i class="fas fa-exclamation-triangle alert"></i>
+        <h2>Please enter all fields.</h2>
+        <i class="fas fa-times exit" id="error-exit"></i>
       </div>
-    </div> -->
+    </div>
 
     <div class="modal-container active" id="add-modal">
       <div id="new-input">
@@ -24,7 +24,7 @@
         <h2>Please enter plant name:</h2>
         <input type="text" id="name-field">
         <button id="add-name-btn">ADD</button>
-        <i class="fas fa-times exit"></i>
+        <i class="fas fa-times exit" id="add-exit"></i>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
 
       <ul id="card-list">
 
-        
+
         <!-- <li>
           <div class="card-container" id="Fig Trees">
             <h1><i class="fa-solid fa-tree"></i>  <span>Fig Trees</span><button class="collapse"><i class="fa-solid fa-angle-right"></i></button></h1>
