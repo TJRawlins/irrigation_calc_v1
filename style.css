@@ -464,12 +464,30 @@ body {
   font-size: 1.5rem;
   padding: 0.5rem;
   margin-left: 1rem;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   border: none;
 }
 
 .modal-container #new-input #name-field:focus {
   outline: none;
+}
+
+/* ADD NAME BUTTON */
+.modal-container #new-input #add-name-btn {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  margin-right: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  color: var(--button-hover);
+  background-color: var(--button);
+  cursor: pointer;
+}
+
+.modal-container #new-input #add-name-btn:hover {
+  background-color: var(--button-hover);
+  color: #fff;
 }
 
 .modal-container #invalid-input i.exit, #new-input i.exit {
@@ -510,5 +528,17 @@ body {
   .btn-container .btn i {
     padding: 0.7rem 1.9rem;
     font-size: 20px;
+  }
+
+  .modal-container #new-input {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .modal-container #new-input h2 {
+    margin-bottom: 1rem;
+  }
+
+  .modal-container #new-input #add-name-btn {
+    margin-top: 1rem;
   }
 }
