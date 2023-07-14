@@ -58,7 +58,7 @@ function addNewCard() {
       alert("Please enter a plant name.")
     } else {
       cardTitle = document.getElementById("name-field").value
-      document.querySelector(".modal-container").remove()
+      showAddModal()
 
       const newListItem = document.createElement("li")
       const newCard = document.createElement("div");
