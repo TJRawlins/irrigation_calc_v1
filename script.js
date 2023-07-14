@@ -9,7 +9,7 @@ const totalMonth = document.getElementById("total-month")
 const totalYear = document.getElementById("total-year")
 
 
-/* -------------- GET TARGET ELEMENT --------------- */
+/* -------------- GET TARGET ELEMENT -------------- */
 
 let targetEl = null;
 let targetContainer = null;
