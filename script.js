@@ -46,11 +46,12 @@ document.addEventListener("click", (e)=> {
 btnAddNew.addEventListener('click', () => {
   // SHOW AND HIDE MODAL
   addModal.classList.remove('active')
-  addExitBtn.addEventListener('click', ()=> {
-    addModal.classList.add('active'); 
-    nameField.value = null;
-  });  
 });
+
+addExitBtn.addEventListener('click', ()=> {
+  addModal.classList.add('active'); 
+  nameField.value = "";
+});  
 
 // ADD CARD
 addNameBtn.addEventListener("click", () => {
@@ -129,10 +130,25 @@ addNameBtn.addEventListener("click", () => {
   }
 });
 
+//CALCULATE TOTAL
+setInterval(()=> {
+  let yearly = document.querySelectorAll("#yearly")
+  let monthly = document.querySelectorAll("#monthly")
+  let monthTotal = 0;
+  let yearTotal = 0;
+  for(let i = 0; i < monthly.length; i++) {
+    monthTotal = Number(monthly[i].innerHTML) + monthTotal
+    yearTotal = Number(yearly[i].innerHTML) + yearTotal
+  totalMonth.innerHTML = monthTotal 
+  totalYear.innerHTML = yearTotal
+}
+}, 2000);
 
-// CALCULATE
+
+// MAIN DOCUMENT LISTENER
 document.addEventListener("click", ()=> {
 
+/* -------------- CALCULATE --------------- */
   if(targetEl.classList.contains('fa-calculator')) {
   
     let entryGph = parseFloat(targetContainer.getElementsByClassName('input-field')[0].value).toFixed(2);
@@ -149,91 +165,66 @@ document.addEventListener("click", ()=> {
     input[3] = targetContainer.getElementsByClassName('input-field')[3].value;
     input[4] = targetContainer.getElementsByClassName('input-field')[4].value;
 
-
     // INPUT CONTAINERS TARGET
     let inputContainer = targetContainer.getElementsByClassName('input-container')[0];
     let savedContainer = targetContainer.getElementsByClassName('input-container')[1];
     
-  
-    for(let i = 0; i < input.length; i++){
-      if (input[i] == ""){
-        // DISPLAY ERROR MODAL
-        errorModal.classList.remove('active')
-        
-        // REMOVE ERROR MODAL
-        errorExitBtn.addEventListener("click", ()=> {errorModal.classList.add('active')});
-  
-          break;
-      } else {
-        // ADD CALCULATION VALUES TO RESULTS CONTAINER FIELDS
-        // Year 
-        targetContainer.getElementsByClassName('result-label')[0].textContent = parseFloat((((entryGph * entryTrees) * entryTimes) * 4) * 12).toFixed(2);
-        // Month
-        targetContainer.getElementsByClassName('result-label')[1].textContent  = parseFloat(((entryGph * entryTrees) * entryTimes) * 4).toFixed(2);
-        // Week
-        targetContainer.getElementsByClassName('result-label')[2].textContent  = parseFloat((entryGph * entryTrees) * entryTimes).toFixed(2);
-        // Runtime
-        targetContainer.getElementsByClassName('result-label')[3].textContent  = parseFloat(entryGph * entryTrees).toFixed(2);
-        // Min
-        targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat((entryGph * entryTrees) / entryMins).toFixed(2);
-        // Emitters
-        targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat((entryGph / entryMins) / entryEmit).toFixed(2);
+    if(input.includes("")) {
+    // DISPLAY ERROR MODAL
+    errorModal.classList.remove('active')
+    
+    // REMOVE ERROR MODAL
+    errorExitBtn.addEventListener("click", ()=> {errorModal.classList.add('active')});
 
-        // ADD INPUT VALUES TO SAVED CONTAINER FIELDS
-        targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML = targetContainer.getElementsByClassName('input-field')[0].value
-        targetContainer.getElementsByClassName('saved-input-field')[1].innerHTML = targetContainer.getElementsByClassName('input-field')[1].value
-        targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML = targetContainer.getElementsByClassName('input-field')[2].value
-        targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML = targetContainer.getElementsByClassName('input-field')[3].value
-        targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML = targetContainer.getElementsByClassName('input-field')[4].value
+    // break;
+    } else {
+      // ADD CALCULATION VALUES TO RESULTS CONTAINER FIELDS
+      // Year 
+      targetContainer.getElementsByClassName('result-label')[0].textContent = parseFloat((((entryGph * entryTrees) * entryTimes) * 4) * 12).toFixed(2);
+      // Month
+      targetContainer.getElementsByClassName('result-label')[1].textContent  = parseFloat(((entryGph * entryTrees) * entryTimes) * 4).toFixed(2);
+      // Week
+      targetContainer.getElementsByClassName('result-label')[2].textContent  = parseFloat((entryGph * entryTrees) * entryTimes).toFixed(2);
+      // Runtime
+      targetContainer.getElementsByClassName('result-label')[3].textContent  = parseFloat(entryGph * entryTrees).toFixed(2);
+      // Min
+      targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat((entryGph * entryTrees) / entryMins).toFixed(2);
+      // Emitters
+      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat((entryGph / entryMins) / entryEmit).toFixed(2);
 
+      // ADD INPUT VALUES TO SAVED CONTAINER FIELDS
+      targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML = targetContainer.getElementsByClassName('input-field')[0].value
+      targetContainer.getElementsByClassName('saved-input-field')[1].innerHTML = targetContainer.getElementsByClassName('input-field')[1].value
+      targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML = targetContainer.getElementsByClassName('input-field')[2].value
+      targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML = targetContainer.getElementsByClassName('input-field')[3].value
+      targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML = targetContainer.getElementsByClassName('input-field')[4].value
 
-        // SHOW RESULTS CONTAINER
-        targetContainer.getElementsByClassName('results-container')[0].style.display = 'flex'
+      // SHOW RESULTS CONTAINER
+      targetContainer.getElementsByClassName('results-container')[0].style.display = 'flex'
 
-        // HIDE/SHOW INPUT CONTAINER
-        inputContainer.classList.toggle("active")
+      // HIDE/SHOW INPUT CONTAINER
+      inputContainer.classList.toggle("active")
 
-        // HIDE/SHOW INPUT CONTAINER
-        savedContainer.classList.toggle("active")
-
-      } 
+      // HIDE/SHOW INPUT CONTAINER
+      savedContainer.classList.toggle("active")
     }    
   }
-});
 
-
-//CALCULATE TOTAL
-setInterval(()=> {
-  let yearly = document.querySelectorAll("#yearly")
-  let monthly = document.querySelectorAll("#monthly")
-  let monthTotal = 0;
-  let yearTotal = 0;
-  for(let i = 0; i < monthly.length; i++) {
-    monthTotal = Number(monthly[i].innerHTML) + monthTotal
-    yearTotal = Number(yearly[i].innerHTML) + yearTotal
-  totalMonth.innerHTML = monthTotal 
-  totalYear.innerHTML = yearTotal
-}
-}, 2000);
-
-
-// EDIT INPUT FIELDS
-document.addEventListener("click", ()=> {
-  
-  try {
-    // INPUT CONTAINERS TARGET
-    let inputContainer = targetContainer.getElementsByClassName('input-container')[0];
-    let savedContainer = targetContainer.getElementsByClassName('input-container')[1];
-
-    // ADD SAVED VALUES TO INPUT CONTAINER FIELDS
-    targetContainer.getElementsByClassName('input-field')[0].value = targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML
-    targetContainer.getElementsByClassName('input-field')[1].value = targetContainer.getElementsByClassName('saved-input-field')[1].innerHTML
-    targetContainer.getElementsByClassName('input-field')[2].value = targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML
-    targetContainer.getElementsByClassName('input-field')[3].value = targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML
-    targetContainer.getElementsByClassName('input-field')[4].value = targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML
-    
+  /* -------------- EDIT INPUT FIELDS --------------- */
+  try {  
 
     if(targetEl.classList.contains('saved-edit')) {
+
+      // INPUT CONTAINERS TARGET
+      let inputContainer = targetContainer.getElementsByClassName('input-container')[0];
+      let savedContainer = targetContainer.getElementsByClassName('input-container')[1];
+
+      // ADD SAVED VALUES TO INPUT CONTAINER FIELDS
+      targetContainer.getElementsByClassName('input-field')[0].value = targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML
+      targetContainer.getElementsByClassName('input-field')[1].value = targetContainer.getElementsByClassName('saved-input-field')[1].innerHTML
+      targetContainer.getElementsByClassName('input-field')[2].value = targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML
+      targetContainer.getElementsByClassName('input-field')[3].value = targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML
+      targetContainer.getElementsByClassName('input-field')[4].value = targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML
 
       // HIDE/SHOW INPUT CONTAINER
       inputContainer.classList.toggle("active")
@@ -244,19 +235,15 @@ document.addEventListener("click", ()=> {
   } catch {
     console.log('EDIT INPUT FIELDS: Element not found');
   }
-});
 
-// TRASH
-document.addEventListener("click", ()=> {
 
+  /* -------------- TRASH --------------- */
   if(targetEl.classList.contains('fa-trash')) {
     targetContainer.remove();
   }
-});
 
 
-// COLLAPSE
-document.addEventListener("click", ()=> {
+  /* -------------- COLLAPSE --------------- */
   if(targetEl.classList.contains('fa-angle-right')) {
     targetEl.classList.add("fa-angle-down")
     targetEl.classList.remove("fa-angle-right")
@@ -266,17 +253,18 @@ document.addEventListener("click", ()=> {
     targetEl.classList.remove("fa-angle-down")
     targetEl.classList.add("fa-angle-right")
   }
+
+  /* -------------- SAVE --------------- */
+    if(targetEl.classList.contains('fa-save')) {
+      const listState = cardList.innerHTML;
+      let listStateSerialized = JSON.stringify(listState);
+      localStorage.setItem("savedListIC", listStateSerialized);
+    }
+
 });
 
 
-
-/* -------------- EVENTS --------------- */
-
-// Add New Card
-// btnAddNew.addEventListener("click", addNewCard)
-
-
-/* ---------------  Save & Load task list ----------------------- */
+  /* -------------- LOAD --------------- */
 window.addEventListener("load", () => {
   if (localStorage.getItem("savedListIC")) {
     let listStateDeserialized = JSON.parse(localStorage.getItem("savedListIC"));
@@ -284,10 +272,3 @@ window.addEventListener("load", () => {
   }
 });
 
-document.addEventListener("click", ()=> {
-  if(targetEl.classList.contains('fa-save')) {
-    const listState = cardList.innerHTML;
-    let listStateSerialized = JSON.stringify(listState);
-    localStorage.setItem("savedListIC", listStateSerialized);
-  }
-});
