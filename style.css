@@ -354,14 +354,18 @@ body {
 }
 
 .btn {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   position: relative;
   background-color: var(--button);
   border: none;
   color: #033c6b;
   font-size: 20px;
-  transition: opacity 250ms ease;
   cursor: pointer;
+  border: 1px solid var(--bg-primary);
   border-radius: 5px;
+  width: 100%;
 }
 
 
@@ -376,10 +380,10 @@ body {
 }
 
 .btn i {
-  margin-right: 0.45rem;
   font-size: 18px;
   color: rgba(0, 0, 0, 0.25);
-  padding: 0.5rem 2.5rem;
+  margin-left: 5%;
+  padding: 0.5rem;
 }
 
 .btn:hover i {

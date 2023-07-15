@@ -112,15 +112,9 @@ addNameBtn.addEventListener("click", () => {
                       
                           <!-- BUTTONS -->
                           <div class="btn-container">
-                            <button type="button" class="btn" id="calc">
-                              <i class="fa-solid fa-calculator"></i>
-                            </button>
-                            <button type="button" class="btn" id="clear">
-                              <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <button type="button" class="btn" id="clear">
-                              <i class="fa-solid fa-save"></i>
-                            </button>
+                            <button type="button" class="btn" id="calc"><i class="fa-solid fa-calculator"></i></button>
+                            <button type="button" class="btn" id="clear"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn" id="save"><i class="fa-solid fa-save"></i></button>
                           </div>
                         </form>`;
     newListItem.appendChild(newCard)
