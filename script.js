@@ -42,7 +42,7 @@ document.addEventListener("click", (e)=> {
 
 /* -------------- FUNCTIONS --------------- */
 
-// ADD NEW CARD
+// INITIATE ADD NEW CARD
 btnAddNew.addEventListener('click', () => {
   // SHOW AND HIDE MODAL
   addModal.classList.remove('active')
@@ -53,7 +53,7 @@ addExitBtn.addEventListener('click', ()=> {
   nameField.value = "";
 });  
 
-// ADD CARD
+// ADD NEW CARD
 addNameBtn.addEventListener("click", () => {
   // SET INPUT TO EMPTY STRING
   let cardTitle = "";
@@ -74,27 +74,22 @@ addNameBtn.addEventListener("click", () => {
                       
                           <!-- RESULTS CONTAINER -->
                           <div class="results-container">
-                            <label>Yearly: <span id="yearly" class="result-label">0.00</span></label>
-                            <label>Monthly: <span id="monthly" class="result-label">0.00</span></label>
-                            <label>Weekly: <span class="result-label">0.00</span></label>
-                            <label>Per Runtime: <span class="result-label">0.00</span></label>
-                            <label>Per Minute:  <span class="result-label">0.00</span></label>
-                            <label>Per Emitter GPM: <span class="result-label">0.00</span></label>
+                            <label id="yearly-label">Yearly: <span id="yearly" class="result-label">0.00</span></label>
+                            <label id="monthly-label">Monthly: <span id="monthly" class="result-label">0.00</span></label>
+                            <label id="weekly-label">Weekly: <span class="result-label">0.00</span></label>
+                            <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
+                            <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
+                            <label id="emitters-label">Per Emitter GPM: <span class="result-label">0.00</span></label>
                           </div>
                       
                           <!-- TEXT INPUT -->
                           <div class="input-container">
                             <div id="text-input">
                               <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input" required/>
-                              <label for="">Gals / Plant</label>
                               <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input" required/>
-                              <label for="">Emitter Ct.</label>
                               <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
-                              <label for="">Plant Ct.</label>
                               <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input" required/>
-                              <label for="">Minutes</label>
                               <input type="number" placeholder="Times per week..." class="input-field" id="times-input" required/>
-                              <label for="">Per week</label>
                             </div>
                           </div>
 
@@ -174,17 +169,17 @@ document.addEventListener("click", ()=> {
     } else {
       // ADD CALCULATION VALUES TO RESULTS CONTAINER FIELDS
       // Year 
-      targetContainer.getElementsByClassName('result-label')[0].textContent = parseFloat((((entryGph * entryTrees) * entryTimes) * 4) * 12).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[0].textContent = parseFloat((entryGph * entryTrees) * 52).toFixed(2);
       // Month
-      targetContainer.getElementsByClassName('result-label')[1].textContent  = parseFloat(((entryGph * entryTrees) * entryTimes) * 4).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[1].textContent  = parseFloat((entryGph * entryTrees) * 4).toFixed(2);
       // Week
-      targetContainer.getElementsByClassName('result-label')[2].textContent  = parseFloat((entryGph * entryTrees) * entryTimes).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[2].textContent  = parseFloat(entryGph * entryTrees).toFixed(2);
       // Runtime
-      targetContainer.getElementsByClassName('result-label')[3].textContent  = parseFloat(entryGph * entryTrees).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[3].textContent  = parseFloat((entryGph * entryTrees) / entryTimes).toFixed(2);
       // Min
-      targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat((entryGph * entryTrees) / entryMins).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat(((entryGph * entryTrees) / entryTimes) / entryMins).toFixed(2);
       // Emitters
-      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat((entryGph / entryMins) / entryEmit).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat((((entryGph * entryTrees) / entryTimes) / entryMins) / entryEmit).toFixed(2);
 
       // ADD INPUT VALUES TO SAVED CONTAINER FIELDS
       targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML = targetContainer.getElementsByClassName('input-field')[0].value

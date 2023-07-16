@@ -96,6 +96,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0 1.25rem;
+  padding-bottom: 2.5rem;
   overflow: auto;
 }
 
@@ -111,7 +112,7 @@ body {
 
 .card-container {
   position: relative;
-  width: 350px;
+  width: 300px;
   background-color: #333;
   padding: 20px 20px;
   margin: 1rem 0.5rem;
@@ -167,6 +168,8 @@ body {
 }
 
 .results-container label {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   background-color: rgba(0, 0, 0, 0.25);
   padding: 5px 10px;
@@ -174,33 +177,79 @@ body {
 }
 
 .results-container label span {
-  position: absolute;
-  top: 10%;
-  left: 65%;
   font-weight: normal;
   color: #fff;
 }
 
+/* RESULTS TOOLTIPS */
+
+.results-container label:hover::before {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  color: rgb(146, 146, 91);
+  background-color: rgb(255, 255, 222);
+  padding: 2px 5px;
+  border: 1px solid rgb(146, 146, 91);
+  border-radius: 5px;
+  font-size: 0.7rem;
+}
+
+#yearly-label:hover::before {
+  content: "Total gallons per year (52 weeks)";
+}
+#monthly-label:hover::before {
+  content: "Total gallons per month (4 weeks)";
+}
+#weekly-label:hover::before {
+  content: "Total gallons per week";
+}
+#runtime-label:hover::before {
+  content: "Total gallons per runtime";
+}
+#minutes-label:hover::before {
+  content: "Total gallons per minute";
+}
+#emitters-label:hover::before {
+  content: "Gallons per minute per emitter per plant";
+}
+
+
 /* INPUT CONTAINER */
 
 .input-container {
+  /* margin: 1rem 0;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px; */
+  position: relative;
   display: flex;
   margin: 1rem 0;
   background-color: #fff;
   padding: 0.5rem;
   border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.input-container .text-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  align-content: center;
+  width: 100%;
 }
 
 .input-container input {
-  background-color: transparent;
-  border: 0;
-  border-bottom: 2px dotted var(--button-hover);
-  font-size: 15px;
-  font-weight: 600;
+  position: relative;
+  display: flex;
+  justify-content: left;
   color: var(--button-hover);
-  margin-right: 1rem;
   width: 100%;
-  padding: 0.25rem 0.2rem;
+  font-size: 16px;
+  font-weight: 800;
+  border: none;
+  border-bottom: 2px dotted var(--button-hover);
 }
 
 .input-container input::placeholder {
@@ -213,11 +262,6 @@ body {
   outline: none;
 }
 
-#text-input label {
-  font-size: 0.8rem;
-  margin-left: -110px;
-  color: black;
-} 
 
 /* INPUT SAVED CONTAINER */
 
@@ -246,7 +290,7 @@ body {
   top: 0px;
   width: 100%;
   height: 100%;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 800;
   content: "CLICK TO EDIT";
   color: var(--text-primary-color);
@@ -259,9 +303,8 @@ body {
 
 .input-container.saved #saved-input{
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
   width: 100%;
 }
@@ -269,21 +312,23 @@ body {
 .input-container.saved #saved-input .saved-input-field {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
+  justify-content: left;
   color: var(--gradient-secondary);
   width: 50%;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
-  border-bottom: 2px dotted ;
-  padding: 0.25rem 0.2rem;
+  border-bottom: 2px solid var(--gradient-secondary);
 }
 
 .input-container.saved #saved-input label {
+  display: flex;
+  justify-content: right;
+  align-content: end;
+  flex-wrap: wrap;
+  width: 50%;
   font-size: 0.8rem;
   font-weight: 100;
-  text-align: center;
+  border-bottom: 2px solid var(--gradient-secondary);
 }
 
 
@@ -344,6 +389,7 @@ body {
 .card-container .collapse i {
   color: white;
   font-size: 1.5rem;
+  width: 100%;
 }
 
 .btn-container {
@@ -384,6 +430,7 @@ body {
   color: rgba(0, 0, 0, 0.25);
   margin-left: 5%;
   padding: 0.5rem;
+  width: 100%;
 }
 
 .btn:hover i {
