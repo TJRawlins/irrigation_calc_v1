@@ -15,6 +15,12 @@ const addExitBtn = document.getElementById('add-exit')
 const addNameBtn = document.getElementById('add-name-btn')
 const nameField = document.getElementById("name-field")
 
+// Fix collapse icon for saved cards
+const collapseIcon = document.querySelector(".fa-angle-down")
+collapseIcon.classList.add(".fa-angle-right")
+collapseIcon.classList.remove(".fa-angle-down")
+
+
 
 /* -------------- GET TARGET ELEMENT -------------- */
 
@@ -69,7 +75,7 @@ addNameBtn.addEventListener("click", () => {
     const newCard = document.createElement("div");
     newCard.classList.add('card-container')
 
-    newCard.innerHTML = `<h1><i class="fa-solid fa-tree"></i>  <span>${cardTitle}</span><button class="collapse"><i class="fa-solid fa-angle-right"></i></button></h1>
+    newCard.innerHTML = `<h1><i class="fa-solid fa-tree"></i>  <span>${cardTitle}</span><button class="collapse"><i class="fa-solid fa-angle-down"></i></button></h1>
                         <form class="card-form">
                       
                           <!-- RESULTS CONTAINER -->
