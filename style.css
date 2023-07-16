@@ -556,7 +556,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding-top: 2.5rem;
   }
 
   #title, #total-container {
