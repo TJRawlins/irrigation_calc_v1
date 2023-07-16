@@ -179,7 +179,7 @@ document.addEventListener("click", ()=> {
       // Min
       targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat(((entryGph * entryTrees) / entryTimes) / entryMins).toFixed(2);
       // Emitters
-      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat((((entryGph * entryTrees) / entryTimes) / entryMins) / entryEmit).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat(((entryGph / entryTimes) / entryMins) / entryEmit).toFixed(2);
 
       // ADD INPUT VALUES TO SAVED CONTAINER FIELDS
       targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML = targetContainer.getElementsByClassName('input-field')[0].value
