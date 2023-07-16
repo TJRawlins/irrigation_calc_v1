@@ -10,7 +10,7 @@
   </head>
   <body>
 
-    <div class="modal-container active" id="error-modal">
+    <div class="modal-container hide" id="error-modal">
       <div id="invalid-input">
         <i class="fas fa-exclamation-triangle alert"></i>
         <h2>Please enter all fields.</h2>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="modal-container active" id="add-modal">
+    <div class="modal-container hide" id="add-modal">
       <div id="new-input">
         <i class="fa-solid fa-tree"></i>
         <h2>Please enter plant name:</h2>
@@ -54,14 +54,13 @@
 
       <ul id="card-list">
 
-
-        <li>
+        <!-- <li>
           <div class="card-container" id="Fig Trees">
-            <h1><i class="fa-solid fa-tree"></i>  <span>Fig Trees</span><button class="collapse"><i class="fa-solid fa-angle-down"></i></button></h1>
+            <h1><i class="plant-icon fa-solid"></i>  <span>EXAMPLE</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
             <form class="card-form">
               <div class="results-container">
                 <label id="yearly-label">Yearly: <span id="yearly" class="result-label">0.00</span></label>
-                <label id="monthly-label">Monthly: <span id="monthly" class="result-label">5.10</span></label>
+                <label id="monthly-label">Monthly: <span id="monthly" class="result-label">0.00</span></label>
                 <label id="weekly-label">Weekly: <span class="result-label">0.00</span></label>
                 <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
                 <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
@@ -75,11 +74,27 @@
                   <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input"/>
                   <input type="number" placeholder="Times per week..." class="input-field" id="times-input"/>
                 </div>
+                <div class="radio-group">
+                  <label class="radio">
+                    <i class="fa-solid fa-tree"></i>
+                    <span class="radio-input">
+                      <input type="radio" class="radio-button" id="tree-card" name="wage" value="tree-card" />
+                      <span class="radio-control"></span>
+                    </span>
+                  </label>
+                  <label class="radio">
+                    <i class="fa-solid fa-cloud"></i>
+                    <span class="radio-input">
+                      <input type="radio" class="radio-button" id="shrub-card" name="wage" value="shrub-card" />
+                      <span class="radio-control"></span>
+                    </span>
+                  </label>
+                </div>
               </div>
-              <div class="input-container saved active">
+              <div class="input-container saved hide">
                 <div id="saved-input">
                   <div class="saved-input-field">0</div><label>Gals per plant</label>
-                  <div class="saved-input-field">0</div><label>Emitter Ct.</label>
+                  <div class="saved-input-field">0</div><label>Emitters per plant</label>
                   <div class="saved-input-field">0</div><label>Plant Ct.</label>
                   <div class="saved-input-field">0</div><label>Minutes</label>
                   <div class="saved-input-field">0</div><label>Per week</label>
@@ -99,7 +114,7 @@
               </div>
             </form>
           </div>          
-        </li>
+        </li> -->
 
       </ul>
 

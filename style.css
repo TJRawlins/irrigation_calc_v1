@@ -140,7 +140,7 @@ body {
   display: block;
 }
 
-.active {
+.hide {
   display: none !important;
 }
 
@@ -151,7 +151,7 @@ body {
 
 .card-container i {
   margin-right: 0.5rem;
-  color: #fff;
+  color: green;
   font-size: 2rem;
 }
 
@@ -218,10 +218,6 @@ body {
 /* INPUT CONTAINER */
 
 .input-container {
-  /* margin: 1rem 0;
-  background-color: #fff;
-  padding: 0.5rem;
-  border-radius: 5px; */
   position: relative;
   display: flex;
   margin: 1rem 0;
@@ -249,11 +245,11 @@ body {
   font-size: 16px;
   font-weight: 800;
   border: none;
-  border-bottom: 2px dotted var(--button-hover);
+  border-bottom: 1px solid lightgray;
 }
 
 .input-container input::placeholder {
-  color: #b4b4b4;
+  color: lightgray;
   font-weight: 100;
 }
 
@@ -334,6 +330,7 @@ body {
 
 /* -------------- BUTTON CONTAINER -------------- */
 
+/* NAV BUTTONS */
 #navbar-container button {
   background-color: transparent;
   color: var(--gradient-secondary);
@@ -353,6 +350,7 @@ body {
   transform: scale(.95);
 }
 
+/* CARD BUTTONS */
 .main-container button#add-new {
   display: flex;
   padding: 2.3rem;
@@ -436,6 +434,74 @@ body {
 .btn:hover i {
   color: var(--text-primary-color);
 }
+
+/* RADIO BUTTONS */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.radio i {
+  font-size: 1.75rem;
+  color: green;
+  transform: scaleX(-1);
+  text-align: center;
+  justify-content: center;
+  margin: 0;
+  margin-bottom: 0.25rem;
+  padding: 0;
+}
+
+.radio .fa-cloud {
+  font-size: 1.5rem;
+}
+
+.radio-button {
+  cursor: pointer;
+}
+
+.input-container .radio-group input {
+  opacity: 0.5;
+  width: 0;
+  height: 0;
+}
+
+.radio-control {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid var(--text-primary-color);
+  transform: translateY(-0.05rem);
+}
+
+.radio-input {
+  display: flex;
+}
+
+.radio-input input:checked + .radio-control {
+  background-image: radial-gradient(
+    lightgray,
+    lightgray
+  );
+}
+
 
 /* -------------- MODAL CONTAINER -------------- */
 
