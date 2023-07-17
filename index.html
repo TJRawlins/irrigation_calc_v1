@@ -10,6 +10,7 @@
   </head>
   <body>
 
+    <!-- FIELD VALIDATION MODAL -->
     <div class="modal-container hide" id="error-modal">
       <div id="invalid-input">
         <i class="fas fa-exclamation-triangle alert"></i>
@@ -18,6 +19,7 @@
       </div>
     </div>
 
+    <!-- ADD NEW PLANT MODAL -->
     <div class="modal-container hide" id="add-modal">
       <div id="new-input">
         <i class="fa-solid fa-tree"></i>
@@ -28,6 +30,7 @@
       </div>
     </div>
 
+    <!-- NAVBAR -->
     <nav id="navbar-container">
       <div id="title">
         <h1><i class="fa-solid fa-water"></i> Irrigation <span>Calculator</span></h1>
@@ -39,6 +42,9 @@
           </li>
           <li class="total-item">Year:
             <label for="year" id="total-year">0.00</label>
+          </li>
+          <li class="total-item">Plants:
+            <label for="plants" id="total-plants">0</label>
           </li>
             <button id="add-new"><i class="fa-solid fa-plus"></i></button>
             <button><i class="fa-solid fa-save"></i></button>
@@ -54,9 +60,9 @@
 
       <ul id="card-list">
 
-        <!-- <li>
+        <li>
           <div class="card-container" id="Fig Trees">
-            <h1><i class="plant-icon fa-solid"></i>  <span>EXAMPLE</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
+            <h1><i class="plant-icon fa-solid"></i><span class="plant-count">1</span><span>EXAMPLE</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
             <form class="card-form">
               <div class="results-container">
                 <label id="yearly-label">Yearly: <span id="yearly" class="result-label">0.00</span></label>
@@ -114,7 +120,7 @@
               </div>
             </form>
           </div>          
-        </li> -->
+        </li>
 
       </ul>
 

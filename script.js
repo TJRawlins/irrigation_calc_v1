@@ -8,6 +8,7 @@ const btnAddNew = document.getElementById("add-new")
 const cardList = document.getElementById("card-list")
 const totalMonth = document.getElementById("total-month")
 const totalYear = document.getElementById("total-year")
+const totalPlants = document.getElementById("total-plants")
 const errorModal = document.getElementById('error-modal')
 const errorExitBtn = document.getElementById('error-exit')
 const addModal = document.getElementById('add-modal')
@@ -68,7 +69,7 @@ addNameBtn.addEventListener("click", () => {
     const newCard = document.createElement("div");
     newCard.classList.add('card-container')
 
-    newCard.innerHTML = `<h1><i class="plant-icon fa-solid"></i>  <span>${cardTitle.toUpperCase()}</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
+    newCard.innerHTML = `<h1><i class="plant-icon fa-solid"></i><span class="plant-count"></span><span>${cardTitle.toUpperCase()}</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
                         <form class="card-form">
                       
                           <!-- RESULTS CONTAINER -->
@@ -138,13 +139,17 @@ addNameBtn.addEventListener("click", () => {
 setInterval(()=> {
   let yearly = document.querySelectorAll("#yearly")
   let monthly = document.querySelectorAll("#monthly")
+  let plants = document.querySelectorAll(".plant-count")
   let monthTotal = 0;
   let yearTotal = 0;
+  let plantTotal = 0;
   for(let i = 0; i < monthly.length; i++) {
     monthTotal = Number(monthly[i].innerHTML) + monthTotal
     yearTotal = Number(yearly[i].innerHTML) + yearTotal
+    plantTotal = Number(plants[i].innerHTML) + plantTotal
   totalMonth.innerHTML = monthTotal 
   totalYear.innerHTML = yearTotal
+  totalPlants.innerHTML = plantTotal
 }
 }, 2000);
 
@@ -169,7 +174,7 @@ document.addEventListener("click", ()=> {
     input[3] = targetContainer.getElementsByClassName('input-field')[3].value;
     input[4] = targetContainer.getElementsByClassName('input-field')[4].value;
 
-    // RADIO BUTTONS
+    // RADIO BUTTONS LIST
     const radioBtn = [];
     radioBtn[0] = targetContainer.getElementsByClassName('radio-button')[0];
     radioBtn[1] = targetContainer.getElementsByClassName('radio-button')[1];
@@ -189,7 +194,6 @@ document.addEventListener("click", ()=> {
 
       // RADIO BUTTON CONDITION
       let plantIcon = targetContainer.getElementsByClassName('plant-icon')[0]
-      console.log(plantIcon);
       
       if(radioBtn[0].checked) {
         plantIcon.classList.remove('fa-cloud')
@@ -219,6 +223,10 @@ document.addEventListener("click", ()=> {
       targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML = targetContainer.getElementsByClassName('input-field')[2].value
       targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML = targetContainer.getElementsByClassName('input-field')[3].value
       targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML = targetContainer.getElementsByClassName('input-field')[4].value
+
+      // ADD TREE COUNT TO PLANT ICON
+      let plantCount = targetContainer.getElementsByClassName('plant-count')[0]
+      plantCount.textContent = parseInt(entryTrees)
 
       // SHOW RESULTS CONTAINER
       targetContainer.getElementsByClassName('results-container')[0].style.display = 'flex'

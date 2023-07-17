@@ -145,15 +145,30 @@ body {
 }
 
 .card-container h1 {
+
   font-size: 1.25rem;
   text-align: left;
 }
 
+i.fa-cloud {
+  font-size: 1.5rem !important;
+}
+
 .card-container i.plant-icon {
   margin-right: 0.5rem;
-  color: green;
+  color: rgb(94, 143, 94);
   font-size: 1.75rem;
-  transform: scaleX(-1);
+}
+
+span.plant-count {
+  position: absolute;
+  color: rgb(195, 211, 198);
+  font-size: 0.65rem;
+  width: 20px;
+  top: 28px;
+  left: 22px;
+  text-align: center;
+  text-justify: center;
 }
 
 .card-container h1 span {
@@ -246,12 +261,12 @@ body {
   font-size: 16px;
   font-weight: 800;
   border: none;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .input-container input::placeholder {
-  color: lightgray;
-  font-weight: 100;
+  color: gray;
+  font-weight: 500;
 }
 
 .input-container input:focus,
@@ -498,8 +513,8 @@ body {
 
 .radio-input input:checked + .radio-control {
   background-image: radial-gradient(
-    lightgray,
-    lightgray
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25)
   );
 }
 
@@ -632,7 +647,19 @@ body {
     width: 100%;
   }
 
-  #total-month, #total-year {
+  #total-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  #total-container ul li {
+    margin: 0.5rem;
+  }
+
+
+  #total-month, #total-year, #total-plants {
     margin-left: 0.5rem;
   }
 
