@@ -80,6 +80,7 @@ addNameBtn.addEventListener("click", () => {
                             <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
                             <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
                             <label id="emitters-label">Per Emitter GPM: <span class="result-label">0.00</span></label>
+                            <label id="emitters-oz-label">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
                           </div>
                       
                           <!-- TEXT INPUT -->
@@ -216,6 +217,9 @@ document.addEventListener("click", ()=> {
       targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat(((entryGph * entryTrees) / entryTimes) / entryMins).toFixed(2);
       // Emitters
       targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat(((entryGph / entryTimes) / entryMins) / entryEmit).toFixed(2);
+      // Emitters OZ
+      targetContainer.getElementsByClassName('result-label')[6].textContent  = parseFloat(((((entryGph / entryTimes) / entryMins) / entryEmit)*128)/4).toFixed(2);
+      
 
       // ADD INPUT VALUES TO SAVED CONTAINER FIELDS
       targetContainer.getElementsByClassName('saved-input-field')[0].innerHTML = targetContainer.getElementsByClassName('input-field')[0].value
