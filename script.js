@@ -39,8 +39,7 @@ document.addEventListener("click", (e)=> {
 })
 
 
-
-/* -------------- FUNCTIONS --------------- */
+/* -------------- FUNCTIONS ---------------- */
 
 // INITIATE ADD NEW CARD
 btnAddNew.addEventListener('click', () => {
