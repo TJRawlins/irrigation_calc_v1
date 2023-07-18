@@ -56,15 +56,26 @@ body {
   );
 }
 
+#navbar-container h1 {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
 #navbar-container h1 i {
   color: var(--gradient-secondary);
+  background-color: #333;
+  padding: 0.25rem;
+  border: 1px solid #444;
+  border-radius: 5px;
 }
 
 #navbar-container h1 span {
-  font-weight: 100;
+  font-weight: 300;
 }
 
 #total-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
 }
 
@@ -73,13 +84,14 @@ body {
   list-style-type: none;
 }
 
-#total-container ul li {
+#total-container ul li.total-item {
   margin: 0 0.5rem;
   padding: 0.25rem 0.8rem;
   background-color: var(--button);
   color: var(--bg-primary);
   border: 1px solid var(--gradient-secondary);
   border-radius: 20px;
+  font-size: 0.7rem;
   font-weight: 800;
 }
 
@@ -87,6 +99,16 @@ body {
   color: var(--button-hover);
 }
 
+#navbtn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbtn-container button i {
+  font-size: 1rem;
+  padding: 0.3rem;
+}
 
 
 /* -------------- MAIN CONTAINER -------------- */ 
@@ -114,8 +136,10 @@ body {
   position: relative;
   width: 300px;
   background-color: #333;
-  padding: 20px 20px;
-  margin: 1rem 0.5rem;
+  padding: 20px;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   height: fit-content;
   border-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -145,10 +169,28 @@ body {
   display: none !important;
 }
 
-.card-container h1 {
-
-  font-size: 1.25rem;
+.card-title {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 75%;
+  font-size: 1.25rem !important;
+  text-align: center;
+  text-justify: center;
   text-align: left;
+}
+
+.card-container h1 {
+  display: flex;
+  font-size: 0.5rem;
+  text-align: left;
+}
+
+.card-container h1 span:nth-last-child(2) {
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 i.fa-cloud {
@@ -237,6 +279,7 @@ span.plant-count {
 .input-container {
   position: relative;
   display: flex;
+  justify-content: space-between;
   margin: 1rem 0;
   background-color: #fff;
   padding: 0.5rem;
@@ -255,8 +298,6 @@ span.plant-count {
 
 .input-container input {
   position: relative;
-  display: flex;
-  justify-content: left;
   color: var(--button-hover);
   width: 100%;
   font-size: 16px;
@@ -460,7 +501,7 @@ span.plant-count {
   justify-content: space-around;
   align-items: center;
   padding: 0.5rem;
-  margin-top: 0.5rem;
+  width: 20%;
 }
 
 .radio {
@@ -475,7 +516,7 @@ span.plant-count {
 }
 
 .radio i {
-  font-size: 1.75rem;
+  font-size: 2rem;
   color: green;
   transform: scaleX(-1);
   text-align: center;
@@ -504,7 +545,7 @@ span.plant-count {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  border: 2px solid var(--text-primary-color);
+  border: 3px solid var(--button-hover-gray);
   transform: translateY(-0.05rem);
 }
 
@@ -514,8 +555,8 @@ span.plant-count {
 
 .radio-input input:checked + .radio-control {
   background-image: radial-gradient(
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.25)
+    var(--button-hover),
+    var(--button-hover)
   );
 }
 
@@ -639,7 +680,6 @@ span.plant-count {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-top: 2.5rem;
   }
 
   #title, #total-container {
@@ -652,10 +692,26 @@ span.plant-count {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 0.5rem;
+    align-items: center;
+    margin: 0.5rem;
   }
 
-  #total-container ul li {
+  #total-container{
+    margin: 0;
+  }
+
+ #navbtn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+} 
+
+  #total-container #add-new, #total-container #nav-save {
+    height: 1.25rem;
+  }
+
+  #total-container ul button {
     margin: 0.5rem;
   }
 
@@ -664,22 +720,19 @@ span.plant-count {
     margin-left: 0.5rem;
   }
 
-  #total-container ul {
-    margin-top: 0.5rem;
-    
-  }
-
   .total-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
+    padding: 0.4rem !important;
+    margin: 0;
+    height: 1.25rem
   }
   
   .card-container {
     width: 85vw;
   }
-
 
   .btn-container .btn i {
     padding: 0.7rem 1.9rem;

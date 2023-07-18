@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/8dfc375738.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;700&display=swap" rel="stylesheet">
     <title>Irrigation Calculator</title>
   </head>
   <body>
@@ -24,7 +29,7 @@
       <div id="new-input">
         <i class="fa-solid fa-tree"></i>
         <h2>Please enter plant name:</h2>
-        <input type="text" id="name-field">
+        <input type="text" id="name-field" maxlength="20">
         <button id="add-name-btn">ADD</button>
         <i class="fas fa-times exit" id="add-exit"></i>
       </div>
@@ -33,7 +38,7 @@
     <!-- NAVBAR -->
     <nav id="navbar-container">
       <div id="title">
-        <h1><i class="fa-solid fa-water"></i> Irrigation <span>Calculator</span></h1>
+        <h1><i class="fa-solid fa-water"></i> Irrigation<span>Calculator</span></h1>
       </div>
       <div id="total-container">
         <ul>
@@ -46,9 +51,11 @@
           <li class="total-item">Plants:
             <label for="plants" id="total-plants">0</label>
           </li>
-            <button id="add-new"><i class="fa-solid fa-plus"></i></button>
-            <button><i class="fa-solid fa-save"></i></button>
         </ul>
+      </div>
+      <div id="navbtn-container">
+        <button id="add-new"><i class="fa-solid fa-plus"></i></button>
+        <button id="nav-save"><i class="fa-solid fa-save"></i></button>
       </div>
     </nav>
 

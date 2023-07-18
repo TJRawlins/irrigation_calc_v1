@@ -68,7 +68,7 @@ addNameBtn.addEventListener("click", () => {
     const newCard = document.createElement("div");
     newCard.classList.add('card-container')
 
-    newCard.innerHTML = `<h1><i class="plant-icon fa-solid"></i><span class="plant-count"></span><span>${cardTitle.toUpperCase()}</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
+    newCard.innerHTML = `<h1><i class="plant-icon fa-solid"></i><span class="plant-count"></span><span class="card-title">${cardTitle.toUpperCase()}</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
                         <form class="card-form">
                       
                           <!-- RESULTS CONTAINER -->
