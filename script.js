@@ -85,7 +85,7 @@ addNameBtn.addEventListener("click", () => {
                           <!-- TEXT INPUT -->
                           <div class="input-container">
                             <div id="text-input">
-                              <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input" required/>
+                              <input type="number" placeholder="Gallons per week per plant..." class="input-field" id="gallons-input" required/>
                               <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input" required/>
                               <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
                               <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input" required/>
