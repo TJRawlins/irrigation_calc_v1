@@ -427,9 +427,10 @@ document.addEventListener("click", ()=> {
 
   /* -------------- SAVE --------------- */
     if(targetEl.classList.contains('fa-save')) {
-      const listState = cardList.innerHTML;
+      const listState = mainContainer.innerHTML;
       let listStateSerialized = JSON.stringify(listState);
       localStorage.setItem("savedListIC", listStateSerialized);
+      cardList = document.getElementById("card-list")
     }
 
 });
@@ -439,7 +440,8 @@ document.addEventListener("click", ()=> {
 window.addEventListener("load", () => {
   if (localStorage.getItem("savedListIC")) {
     let listStateDeserialized = JSON.parse(localStorage.getItem("savedListIC"));
-    cardList.innerHTML = listStateDeserialized;
+    mainContainer.innerHTML = listStateDeserialized;
+    cardList = document.getElementById("card-list")
   }
 });
 
