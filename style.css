@@ -206,7 +206,7 @@ body {
 .zone-container {
   position: relative;
   padding: 0.25rem;
-  border: 5px dotted #f1f1f1;
+  border: px solid #f1f1f1;
   border-radius: 10px;
 }
 
@@ -883,6 +883,8 @@ span.plant-count {
 
   #card-list {
     padding: 0;
+    justify-content: center;
+    align-items: center;
   }
   
   .card-container {
