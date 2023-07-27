@@ -4,8 +4,9 @@
 /* -------------- VARIABLES --------------- */
 
 const body = document.querySelector("body");
+const mainContainer = document.querySelector(".main-container")
 const btnAddNew = document.getElementById("add-new")
-const cardList = document.getElementById("card-list")
+let cardList = document.getElementById("card-list")
 const totalMonth = document.getElementById("total-month")
 const totalYear = document.getElementById("total-year")
 const totalPlants = document.getElementById("total-plants")
@@ -15,6 +16,12 @@ const addModal = document.getElementById('add-modal')
 const addExitBtn = document.getElementById('add-exit')
 const addNameBtn = document.getElementById('add-name-btn')
 const nameField = document.getElementById("name-field")
+const btnAddNewZone = document.getElementById("add-zone")
+const zoneName = document.querySelectorAll(".zone h1")
+const zoneDeleteModal = document.getElementById("warning-modal")
+const warningExitBtn = document.getElementById("warning-exit")
+const deleteZoneBtn = document.getElementById("delete-zone")
+const dontDeleteZoneBtn = document.getElementById("dont-delete-zone")
 
 
 
@@ -22,6 +29,7 @@ const nameField = document.getElementById("name-field")
 
 let targetEl = null;
 let targetContainer = null;
+let targetContainerZone = null;
 
 document.addEventListener("click", (e)=> {
   targetEl = e.target;
@@ -29,6 +37,7 @@ document.addEventListener("click", (e)=> {
   
   try {
   targetContainer = targetEl.parentElement.parentElement.parentElement.parentElement
+  targetContainerZone = targetEl.parentElement
     // console.log(targetContainer);
     
     // console.log(targetContainer.getElementsByClassName('input-field')[0].value);
@@ -41,12 +50,57 @@ document.addEventListener("click", (e)=> {
 
 /* -------------- FUNCTIONS ---------------- */
 
-// INITIATE ADD NEW CARD
-btnAddNew.addEventListener('click', () => {
-  // SHOW AND HIDE MODAL
-  addModal.classList.remove('hide')
+// ADD NEW ZONE
+btnAddNewZone.addEventListener("click", () => {
+  // CREATE NEW ZONE ELEMENTS
+  const newZoneEl= document.createElement("div");
+  newZoneEl.classList.add("zone");
+
+  // CREATE ZONE TITLE H1 ELEMENT
+  const zoneH1 = document.createElement('h1');
+  zoneH1.classList.add('zone-name')
+  zoneH1.textContent = "New Zone"
+  // CREATE ZONE TITLE EDIT ICON
+  const zoneEditIcon = document.createElement('i')
+  zoneEditIcon.classList.add('fa-solid')
+
+  zoneEditIcon.classList.add('fa-pencil')
+  // APPEND TITLE H1 TO ZONE
+  zoneH1.appendChild(zoneEditIcon)
+  newZoneEl.appendChild(zoneH1)
+
+  // CREATE ZONE EDIT WRAPPER ELEMENT
+  const zoneEditWrapper = document.createElement('div')
+  zoneEditWrapper.classList.add('zone-edit-wrapper')
+  zoneEditWrapper.innerHTML = `<input type="text" class="zone-edit" placeholder="Enter zone name..." require><button class="zone-btn">Save</button>`
+  newZoneEl.appendChild(zoneEditWrapper)
+                           
+  // CREATE ZONE CONTAINER
+  const zoneContainer = document.createElement("div");
+  zoneContainer.classList.add("zone-container");
+  zoneContainer.innerHTML = `<div class="delete-zone-btn"><i class="fa-regular fa-circle-xmark"></i></div><ul id="card-list"></ul>`;
+  newZoneEl.appendChild(zoneContainer)
+
+  // APPEND IT ALL TO THE MAIN CONTAINER
+  mainContainer.appendChild(newZoneEl);
+  // targetEl.style.display = "none";
+
+  // SET VALUE FOR CARD LIST
+  cardList = document.getElementById("card-list")
 });
 
+// INITIATE ADD NEW CARD
+btnAddNew.addEventListener('click', () => {
+  let zone = document.querySelector(".zone")
+  if(zone) {
+    // SHOW MODAL
+    addModal.classList.remove('hide')
+  } else {
+    alert("You need at least 1 zone before adding plants.")
+  }
+
+});
+// EXIT ADD NEW CARD MODAL 
 addExitBtn.addEventListener('click', ()=> {
   addModal.classList.add('hide'); 
   nameField.value = "";
@@ -59,12 +113,19 @@ addNameBtn.addEventListener("click", () => {
   if (nameField.value === "") {
     alert('Please enter a name.')
   } else {
+    // GENERATE A RANDOM CARD ID
+    let  min = 10000;
+    let max = 90000
+    let randInt = Math.random() * (max - min) + min;
     cardTitle = document.getElementById("name-field").value
     nameField.value = null;
     addModal.classList.add('hide')
 
     // CREATE NEW CARD ELEMENTS
     const newListItem = document.createElement("li")
+    newListItem.setAttribute('item-id', parseInt(randInt))
+    newListItem.setAttribute("draggable", "true")
+    newListItem.classList.add('draggable')
     const newCard = document.createElement("div");
     newCard.classList.add('card-container')
 
@@ -157,7 +218,82 @@ setInterval(()=> {
 // MAIN DOCUMENT LISTENER
 document.addEventListener("click", ()=> {
 
-/* -------------- CALCULATE --------------- */
+/* --------------  EDIT ZONE NAME ------------- */
+  if(targetEl.classList.contains('zone-name')) {
+  
+    if(targetEl.nodeName === "H1") {
+
+      // zone name h1 element
+      targetEl.style.display = "none";
+      // zone edit input element
+      targetEl.nextElementSibling.style.display = "flex";
+      // focus on input field
+      targetEl.nextElementSibling.getElementsByClassName("zone-edit")[0].focus()
+
+      //save edit
+      targetContainerZone.getElementsByClassName("zone-btn")[0].addEventListener("click", ()=> {
+
+        // get the zone name element
+        let zoneH1 = null;
+        let zoneEdit = null;
+          if(targetContainerZone.classList.contains("zone")) {
+            // targetContainerZone grabs the zone element
+            zoneH1 = targetContainerZone.getElementsByClassName("zone-name")[0]
+            zoneEdit = targetContainerZone.getElementsByClassName("zone-edit")[0]
+          } else if (targetContainerZone.classList.contains("zone-edit-wrapper")) {
+            // targetContainerZone grabs the zone edit wrapper element so need to jump up to parent (zone)
+            zoneH1 = targetContainerZone.parentElement.getElementsByClassName("zone-name")[0]
+            zoneEdit = targetContainerZone.parentElement.getElementsByClassName("zone-edit")[0]
+          } else {
+            alert("Target element not found")
+          }
+
+        if(zoneEdit.value !== "") {
+        zoneH1.innerHTML = `${zoneEdit.value}<i class="fa-solid fa-pencil"></i>`;      
+        zoneH1.style.display = "block"
+        zoneEdit.parentElement.style.display = "none";
+        } else {
+          // DISPLAY ERROR MODAL
+          errorModal.classList.remove('hide')
+          // REMOVE ERROR MODAL
+          errorExitBtn.addEventListener("click", ()=> {errorModal.classList.add('hide')});
+        } 
+      })
+    } 
+  }
+
+
+  /* --------------- DELETE ZONE ----------------*/
+  if(targetEl.classList.contains('fa-circle-xmark')) {
+    const zoneEl = targetEl.parentElement.parentElement.parentElement
+
+    // SHOW MODAL
+    zoneDeleteModal.classList.remove('hide')
+
+    // HIDE MODAL IF EXIT ICON CLICKED
+    warningExitBtn.addEventListener('click', ()=> {
+      zoneDeleteModal.classList.add('hide');
+    });
+
+    deleteZoneBtn.addEventListener("click", () => {
+      // HIDE MODAL
+      zoneDeleteModal.classList.add('hide');
+      // DELETE ZONE ELEMENT AND EVERYTHING IN IT
+      zoneEl.remove()
+      // SET VALUE FOR CARD LIST
+      cardList = document.getElementById("card-list")
+    })
+
+    dontDeleteZoneBtn.addEventListener('click', () => {
+      // HIDE MODAL
+      zoneDeleteModal.classList.add('hide');
+    })
+
+  }
+
+
+
+  /* -------------- CALCULATE --------------- */
   if(targetEl.classList.contains('fa-calculator')) {
   
     let entryGph = parseFloat(targetContainer.getElementsByClassName('input-field')[0].value).toFixed(2);

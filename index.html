@@ -24,6 +24,19 @@
       </div>
     </div>
 
+    <!-- ZONE DELETION WARNING MODAL -->
+    <div class="modal-container hide" id="warning-modal">
+      <div id="invalid-input">
+        <i class="fas fa-exclamation-triangle alert"></i>
+        <h2>Plants in this zone will be deleted. Are you sure?</h2>
+        <i class="fas fa-times exit" id="warning-exit"></i>
+        <div class="btn-container-column">
+          <button class="btn" id="delete-zone">Yes</button>
+          <Button class="btn" id="dont-delete-zone">No</Button>
+        </div>
+      </div>
+    </div>
+
     <!-- ADD NEW PLANT MODAL -->
     <div class="modal-container hide" id="add-modal">
       <div id="new-input">
@@ -54,7 +67,8 @@
         </ul>
       </div>
       <div id="navbtn-container">
-        <button id="add-new"><i class="fa-solid fa-plus"></i></button>
+        <button id="add-zone"><i class="fa-solid fa-droplet"></i>+</button>
+        <button id="add-new"><i class="fa-solid fa-tree"></i>+</button>
         <button id="nav-save"><i class="fa-solid fa-save"></i></button>
       </div>
     </nav>
@@ -62,78 +76,83 @@
     <!-- MAIN CONTAINER START  -->
     <div class="main-container">
 
-      <!-- ADD NEW BUTTON -->
-      <!-- <button id="add-new"><i class="fa-solid fa-plus"></i></button> -->
+      <!-- ZONES -->
+      <!-- <div class="zone">
+        <h1 class="zone-name">Zone 1<i class="fa-solid fa-pencil"></i></h1>
+        <div class="zone-edit-wrapper">
+          <input type="text" class="zone-edit" placeholder="Enter zone name..." require><button class="zone-btn">Save</button>
+        </div>
+        <div class="zone-container">
+          <div class="delete-zone-btn"><i class="fa-regular fa-circle-xmark"></i></div> -->
+          <!-- CARD LIST -->
+          <!-- <ul id="card-list"> -->
+            <!-- <li>
+              <div class="card-container" id="Fig Trees">
+                <h1><i class="plant-icon fa-solid"></i><span class="plant-count">1</span><span>EXAMPLE</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
+                <form class="card-form">
+                  <div class="results-container">
+                    <label id="yearly-label">Yearly: <span id="yearly" class="result-label">0.00</span></label>
+                    <label id="monthly-label">Monthly: <span id="monthly" class="result-label">0.00</span></label>
+                    <label id="weekly-label">Weekly: <span class="result-label">0.00</span></label>
+                    <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
+                    <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
+                    <label id="emitters-label">Per Emitter GPM: <span class="result-label">0.00</span></label>
+                    <label id="emitters-oz-label">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
+                  </div>
+                  <div class="input-container">
+                    <div id="text-input">
+                      <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input"/>
+                      <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input"/>
+                      <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
+                      <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input"/>
+                      <input type="number" placeholder="Times per week..." class="input-field" id="times-input"/>
+                    </div>
+                    <div class="radio-group">
+                      <label class="radio">
+                        <i class="fa-solid fa-tree"></i>
+                        <span class="radio-input">
+                          <input type="radio" class="radio-button" id="tree-card" name="wage" value="tree-card" />
+                          <span class="radio-control"></span>
+                        </span>
+                      </label>
+                      <label class="radio">
+                        <i class="fa-solid fa-cloud"></i>
+                        <span class="radio-input">
+                          <input type="radio" class="radio-button" id="shrub-card" name="wage" value="shrub-card" />
+                          <span class="radio-control"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="input-container saved hide">
+                    <div id="saved-input">
+                      <div class="saved-input-field">0</div><label>Gals per plant</label>
+                      <div class="saved-input-field">0</div><label>Emitters per plant</label>
+                      <div class="saved-input-field">0</div><label>Plant Ct.</label>
+                      <div class="saved-input-field">0</div><label>Minutes</label>
+                      <div class="saved-input-field">0</div><label>Per week</label>
+                      <div class="saved-edit">CLICK TO EDIT</div>
+                    </div>
+                  </div>
+                  <div class="btn-container">
+                    <button type="button" class="btn" id="calc">
+                      <i class="fa-solid fa-calculator"></i>
+                    </button>
+                    <button type="button" class="btn" id="clear">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button type="button" class="btn" id="clear">
+                      <i class="fa-solid fa-save"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>          
+            </li> -->
+          <!-- </ul>
+        </div>
+      </div> -->
 
-      <ul id="card-list">
-
-        <!-- <li>
-          <div class="card-container" id="Fig Trees">
-            <h1><i class="plant-icon fa-solid"></i><span class="plant-count">1</span><span>EXAMPLE</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
-            <form class="card-form">
-              <div class="results-container">
-                <label id="yearly-label">Yearly: <span id="yearly" class="result-label">0.00</span></label>
-                <label id="monthly-label">Monthly: <span id="monthly" class="result-label">0.00</span></label>
-                <label id="weekly-label">Weekly: <span class="result-label">0.00</span></label>
-                <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
-                <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
-                <label id="emitters-label">Per Emitter GPM: <span class="result-label">0.00</span></label>
-                <label id="emitters-oz-label">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
-              </div>
-              <div class="input-container">
-                <div id="text-input">
-                  <input type="number" placeholder="Gallons per plant..." class="input-field" id="gallons-input"/>
-                  <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input"/>
-                  <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
-                  <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input"/>
-                  <input type="number" placeholder="Times per week..." class="input-field" id="times-input"/>
-                </div>
-                <div class="radio-group">
-                  <label class="radio">
-                    <i class="fa-solid fa-tree"></i>
-                    <span class="radio-input">
-                      <input type="radio" class="radio-button" id="tree-card" name="wage" value="tree-card" />
-                      <span class="radio-control"></span>
-                    </span>
-                  </label>
-                  <label class="radio">
-                    <i class="fa-solid fa-cloud"></i>
-                    <span class="radio-input">
-                      <input type="radio" class="radio-button" id="shrub-card" name="wage" value="shrub-card" />
-                      <span class="radio-control"></span>
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <div class="input-container saved hide">
-                <div id="saved-input">
-                  <div class="saved-input-field">0</div><label>Gals per plant</label>
-                  <div class="saved-input-field">0</div><label>Emitters per plant</label>
-                  <div class="saved-input-field">0</div><label>Plant Ct.</label>
-                  <div class="saved-input-field">0</div><label>Minutes</label>
-                  <div class="saved-input-field">0</div><label>Per week</label>
-                  <div class="saved-edit">CLICK TO EDIT</div>
-                </div>
-              </div>
-              <div class="btn-container">
-                <button type="button" class="btn" id="calc">
-                  <i class="fa-solid fa-calculator"></i>
-                </button>
-                <button type="button" class="btn" id="clear">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-                <button type="button" class="btn" id="clear">
-                  <i class="fa-solid fa-save"></i>
-                </button>
-              </div>
-            </form>
-          </div>          
-        </li> -->
-
-      </ul>
-
-      <!-- MAIN CONTAINER END -->
-    </div>
+    </div> <!-- MAIN CONTAINER END -->
     <script src="script.js"></script>
     <script src="drag.js"></script>
   </body>

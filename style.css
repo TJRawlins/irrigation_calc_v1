@@ -117,19 +117,112 @@ body {
 
 .main-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   padding: 0 1.25rem;
   padding-bottom: 2.5rem;
   overflow: auto;
+  gap: 1rem;
 }
 
 #card-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  list-style-type: none
+  list-style-type: none;
+  min-height: 100px;
+  padding: 1rem;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 10px;
 }
+
+/* --------------- ZONE ----------------------- */
+
+.zone {
+  position: relative;
+}
+
+.zone-name {
+  cursor: pointer;
+}
+
+.zone h1 i.fa-pencil {
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  padding: 0.25rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+.zone h1:hover i.fa-pencil  {
+  opacity: 1;
+}
+
+.zone-edit-wrapper {
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 0.25rem;
+  display: none;
+}
+
+.zone .zone-edit {
+  background-color: transparent;
+  color: #ffff;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  padding: .5rem;
+  width: 220px;
+}
+
+.zone .zone-edit::placeholder {
+  color: var(--light-gray);
+}
+
+.zone .zone-btn {
+  align-self: center;
+  background-color: var(--button-hover);
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.25rem 1rem;
+  margin-left: 0.45rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 25px;
+}
+
+.zone .zone-btn:hover {
+  background-color: green;
+  transform: scale(1.05);
+}
+
+.zone .zone-btn:active {
+  transform: scale(1);
+}
+
+.zone-container {
+  position: relative;
+  padding: 0.25rem;
+  border: 5px dotted #f1f1f1;
+  border-radius: 10px;
+}
+
+.delete-zone-btn {
+  position: absolute;
+  top: 0px;
+  left: 2px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: none;
+  z-index: 888;
+}
+
+ .zone-container:hover .delete-zone-btn {
+  display: block;
+ }
 
 
 /* -------------- CARD CONTAINER -------------- */
@@ -139,10 +232,9 @@ body {
   width: 300px;
   background-color: #333;
   padding: 20px;
-  margin-top: 1rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin: 0.5rem;
   height: fit-content;
+  border: 1px solid #0d7abb;
   border-radius: 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
@@ -181,6 +273,7 @@ body {
   text-align: center;
   text-justify: center;
   text-align: left;
+  cursor: move;
 }
 
 .card-container h1 {
@@ -465,6 +558,15 @@ span.plant-count {
   margin-top: .5rem;
 }
 
+.btn-container-column {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 30%;
+  margin-right: 25px;
+  gap: 5px;
+}
+
 .btn {
   display: flex;
   justify-content: center;
@@ -488,13 +590,12 @@ span.plant-count {
 .btn:hover {
   background-color: var(--button-hover);
   text-shadow: 2px 2px #5e5e5e;
-
+  color: #ffff;
 }
 
 .btn i {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.25);
-  margin-left: 5%;
   padding: 0.5rem;
   width: 100%;
 }
@@ -699,7 +800,6 @@ span.plant-count {
   #title, #total-container {
     display: flex;
     justify-content: center;
-    width: 100%;
   }
 
   #total-container ul {
@@ -715,21 +815,24 @@ span.plant-count {
     height: 1.5rem;
   }
 
- #navbtn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-} 
+  #navbtn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+  } 
 
-#navbtn-container button {
-  padding: 0.25rem 3rem;
-}
+  #navbtn-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem 2rem;
+  }
 
-#navbtn-container button i {
-  font-size: 1.5rem;
-}
+  #navbtn-container button i {
+    font-size: 1.25rem;
+  }
 
   #total-container #add-new, #total-container #nav-save {
     height: 1.25rem;
@@ -753,9 +856,37 @@ span.plant-count {
     margin: 0;
     height: 1.25rem
   }
+
+  .zone {
+    width: 100%;
+  }
+
+  .zone h1 {
+    text-align: center;
+  }
+
+  .zone .zone-edit {
+    text-align: center;
+    width: 100%;
+  }
+
+  .zone-btn {
+    width: 100%;
+  }
+
+  .zone-edit-wrapper {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  #card-list {
+    padding: 0;
+  }
   
   .card-container {
-    width: 85vw;
+    width: 80vw;
   }
 
   .btn-container .btn i {

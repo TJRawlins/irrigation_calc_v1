@@ -1,55 +1,91 @@
-setTimeout(()=> {
-    const draggables = document.querySelectorAll('#card-list li')
-    const droppables = document.querySelectorAll('#card-list')
+
+const cards = document.querySelectorAll('#card-list li')
+const zones = document.querySelectorAll('#card-list')
+
+let draggedItem = null;
+let zoneList = null;
+let targetCard = null;
+let dragStartIndex;
+let dragEndIndex;
+
+document.addEventListener('dragstart', (e)=>{
+    draggedItem = e.target;
+    setTimeout(()=> {
+        draggedItem.style.display = "none"
+    }, 0)
+
+    // get item-id value for card that you are dragging
+    if(e.target.nodeName === "LI") {
+        dragStartIndex = +e.target.getAttribute('item-id')
+    }
     
-    draggables.forEach((card) => {
-        card.setAttribute("draggable", "true")
-        card.addEventListener("dragstart", ()=> {
-            card.classList.add("is-dragging");
-        });
-        card.addEventListener("dragend", ()=> {
-            card.classList.remove("is-dragging");
-        });
-    });
+    
+    
+})
 
-    droppables.forEach((zone) => {
-        zone.addEventListener("dragover", (e) => {
-            e.preventDefault();
+document.addEventListener('dragend', (e) => {
+    setTimeout(()=> {
+        draggedItem.style.display = "block"
+        draggedItem = null;
+    }, 0)
+    
+})
 
-            const bottomCard = insertAboveCard(zone, e.clientY);
-            const curCard = document.querySelector(".is-dragging")
-
-            if (!bottomCard) {
-                zone.appendChild(curCard)
-            } else {
-                zone.insertBefore(curCard, bottomCard);
-            }
-        });
-    });
-
-    const insertAboveCard = (zone, mouseY) => {
-        const els = zone.querySelectorAll("#card-list li:not(.is-dragging)");
-
-        let closestCard = null;
-        let closestOffset = Number.NEGATIVE_INFINITY
-
-        els.forEach((card) => {
-            // get top of card
-            const { top } = card.getBoundingClientRect();
-
-            const offset = mouseY - top;
-
-            // find closest card
-            if(offset < 0 && offset > closestOffset) {
-                closestOffset = offset;
-                closestCard = card;
-            }
-        })
-        
-        return closestCard;
+document.addEventListener('dragover', (e)=> {
+    e.preventDefault();
+    if(e.target.nodeName === "UL") {
+ 
     }
 
+    // get item-id value for card that you are dragging over
+    if(e.target.nodeName === "LI") {
+        dragEndIndex = +e.target.getAttribute('item-id')
+    }
+    
+})
+
+document.addEventListener('dragenter', (e)=> {
+    e.preventDefault();
+    if(e.target.nodeName === "UL") {
+        e.target.style.backgroundColor = "rgba(0,0,0,0.3)"
+    }
+    
+})
+
+document.addEventListener('dragleave', (e)=> {
+    e.preventDefault();
+    if(e.target.nodeName === "UL") {
+        e.target.style.backgroundColor = "rgba(0,0,0,0.2)"
+    }
+})
+
+document.addEventListener('drop', (e)=> {
+    if(e.target.nodeName === "UL") {
+        // zoneList = e.target
+        e.target.append(draggedItem)
+        // zoneList = null;
+        e.target.style.backgroundColor = "rgba(0,0,0,0.2)"
 
 
-}, 1000)
+        
+    } else {
+
+        // get item 1 and 2 based on their item-id
+        const itemOne = document.querySelector(`[item-id="${dragStartIndex}"]`)
+        const itemTwo = document.querySelector(`[item-id="${dragEndIndex}"]`)
+        try {
+            // swap item 1 and 2
+            itemTwo.parentNode.insertBefore(itemOne, itemTwo)
+            // console.log(itemOne, itemTwo, itemTwo.parentNode);
+            console.log('Swapped');
+        } catch {
+            console.log('No parent node found.');
+            
+        }
+    }
+
+    
+})
+
+
 
