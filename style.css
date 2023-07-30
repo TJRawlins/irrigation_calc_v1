@@ -156,6 +156,7 @@ body {
 .zone-name {
   cursor: pointer;
   padding-left: 0.5rem;
+  width: fit-content;
 }
 
 .zone h1 i.fa-pencil {
@@ -241,6 +242,13 @@ body {
   top: -10px;
   right: 10px;
   z-index: 2;
+ }
+
+ .total-zone #total-container ul li {
+  background-color: #55555555;
+  color: white;
+  font-weight: 100;
+  backdrop-filter: blur(2px);
  }
 
 
@@ -889,6 +897,10 @@ span.plant-count {
 
   .zone h1 {
     text-align: center;
+  }
+
+  .zone-name {
+    width: 100%;
   }
 
   .zone .zone-edit {
