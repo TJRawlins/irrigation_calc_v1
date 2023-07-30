@@ -51,17 +51,17 @@
     <!-- NAVBAR -->
     <nav id="navbar-container">
       <div id="title">
-        <h1><i class="fa-solid fa-water"></i> Irrigation<span>Calculator</span></h1>
+        <h1 class="prevent-select"><i class="fa-solid fa-water"></i> Irrigation<span>Calculator</span></h1>
       </div>
       <div id="total-container">
         <ul>
-          <li class="total-item">Month:
+          <li class="total-item prevent-select">Month:
             <label for="month" id="total-month">0.00</label>
           </li>
-          <li class="total-item">Year:
+          <li class="total-item prevent-select">Year:
             <label for="year" id="total-year">0.00</label>
           </li>
-          <li class="total-item">Plants:
+          <li class="total-item prevent-select">Plants:
             <label for="plants" id="total-plants">0</label>
           </li>
         </ul>
@@ -77,16 +77,30 @@
     <div class="main-container">
 
       <!-- ZONES -->
-      <!-- <div class="zone">
+      <div class="zone">
         <h1 class="zone-name">Zone 1<i class="fa-solid fa-pencil"></i></h1>
         <div class="zone-edit-wrapper">
           <input type="text" class="zone-edit" placeholder="Enter zone name..." require><button class="zone-btn">Save</button>
         </div>
         <div class="zone-container">
-          <div class="delete-zone-btn"><i class="fa-regular fa-circle-xmark"></i></div> -->
-          <!-- CARD LIST -->
-          <!-- <ul id="card-list"> -->
-            <!-- <li>
+          <div class="total-zone">
+            <div id="total-container">
+              <ul>
+                <li class="total-item prevent-select">Month:
+                  <label for="month" id="total-month">0.00</label>
+                </li>
+                <li class="total-item prevent-select">Year:
+                  <label for="year" id="total-year">0.00</label>
+                </li>
+                <li class="total-item prevent-select">Plants:
+                  <label for="plants" id="total-plants">0</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="delete-zone-btn"><i class="fa-regular fa-circle-xmark"></i></div>
+          <ul id="card-list"> 
+            <li>
               <div class="card-container" id="Fig Trees">
                 <h1><i class="plant-icon fa-solid"></i><span class="plant-count">1</span><span>EXAMPLE</span><button class="collapse"><i class="fa-solid fa-angle-right hide"></i><i class="fa-solid fa-angle-down"></i></button></h1>
                 <form class="card-form">
@@ -147,10 +161,10 @@
                   </div>
                 </form>
               </div>          
-            </li> -->
-          <!-- </ul>
+            </li>
+          </ul>
         </div>
-      </div> -->
+      </div>
 
     </div> <!-- MAIN CONTAINER END -->
     <script src="script.js"></script>

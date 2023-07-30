@@ -32,16 +32,23 @@ body {
   overflow: hidden;
 }
 
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
 /* ------------ NAVBAR ------------- */
 
 #navbar-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  position: relative;
   width: 100%;
   background-color: var(--bg-secondary);
   padding: 15px;
   box-shadow: 0px 5px 5px #00000054;
+  z-index: 999;
 }
 
 #navbar-container::after {
@@ -113,6 +120,7 @@ body {
 }
 
 
+
 /* -------------- MAIN CONTAINER -------------- */ 
 
 .main-container {
@@ -123,6 +131,7 @@ body {
   padding-bottom: 2.5rem;
   overflow: auto;
   gap: 1rem;
+  padding-top: 1rem;
 }
 
 #card-list {
@@ -133,8 +142,10 @@ body {
   min-height: 100px;
   padding: 1rem;
   background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
   border-radius: 10px;
 }
+
 
 /* --------------- ZONE ----------------------- */
 
@@ -144,6 +155,7 @@ body {
 
 .zone-name {
   cursor: pointer;
+  padding-left: 0.5rem;
 }
 
 .zone h1 i.fa-pencil {
@@ -222,6 +234,13 @@ body {
 
  .zone-container:hover .delete-zone-btn {
   display: block;
+ }
+
+ .total-zone {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  z-index: 2;
  }
 
 
@@ -328,6 +347,7 @@ span.plant-count {
   background-color: rgba(0, 0, 0, 0.25);
   padding: 5px 10px;
   margin-bottom: 0.5rem;
+  border-radius: 10px;
 }
 
 .results-container label span {
@@ -378,7 +398,7 @@ span.plant-count {
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
+  margin: 0.5rem 0 0.75rem 0;
   background-color: #fff;
   padding: 0.5rem;
   border-radius: 5px;
@@ -401,12 +421,13 @@ span.plant-count {
   font-size: 16px;
   font-weight: 800;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .input-container input::placeholder {
-  color: gray;
+  color: rgb(175, 175, 175);
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .input-container input:focus,
@@ -420,7 +441,6 @@ span.plant-count {
 .input-container.saved {
   position: relative;
   display: flex;
-  margin: 1rem 0;
   background-color: #333;
   padding: 0.5rem;
   border-radius: 5px;
@@ -613,6 +633,8 @@ span.plant-count {
   align-items: center;
   padding: 0.5rem;
   width: 20%;
+  border-left: 1px solid var(--light-gray);
+  margin-left: 10px;
 }
 
 .radio {
@@ -683,8 +705,8 @@ span.plant-count {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.397);
+  backdrop-filter: blur(30px);
   z-index: 999;
 }
 
@@ -834,6 +856,10 @@ span.plant-count {
     font-size: 1.25rem;
   }
 
+  #total-container {
+    margin: 0;
+  }
+
   #total-container #add-new, #total-container #nav-save {
     height: 1.25rem;
   }
@@ -881,8 +907,12 @@ span.plant-count {
     align-content: center;
   }
 
+  .total-zone {
+    right: 0;
+    width: 100%;
+  }
+
   #card-list {
-    padding: 0;
     justify-content: center;
     align-items: center;
   }

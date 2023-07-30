@@ -78,7 +78,23 @@ btnAddNewZone.addEventListener("click", () => {
   // CREATE ZONE CONTAINER
   const zoneContainer = document.createElement("div");
   zoneContainer.classList.add("zone-container");
-  zoneContainer.innerHTML = `<div class="delete-zone-btn"><i class="fa-regular fa-circle-xmark"></i></div><ul id="card-list"></ul>`;
+  zoneContainer.innerHTML = `<div class="total-zone">
+                              <div id="total-container">
+                                <ul>
+                                  <li class="total-item prevent-select">Month:
+                                    <label for="month" id="total-month">0.00</label>
+                                  </li>
+                                  <li class="total-item prevent-select">Year:
+                                    <label for="year" id="total-year">0.00</label>
+                                  </li>
+                                  <li class="total-item prevent-select">Plants:
+                                    <label for="plants" id="total-plants">0</label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="delete-zone-btn"><i class="fa-regular fa-circle-xmark"></i></div><ul id="card-list"></ul>`;
+
   newZoneEl.appendChild(zoneContainer)
 
   // APPEND IT ALL TO THE MAIN CONTAINER
@@ -134,13 +150,13 @@ addNameBtn.addEventListener("click", () => {
                       
                           <!-- RESULTS CONTAINER -->
                           <div class="results-container">
-                            <label id="yearly-label">Yearly: <span id="yearly" class="result-label">0.00</span></label>
-                            <label id="monthly-label">Monthly: <span id="monthly" class="result-label">0.00</span></label>
-                            <label id="weekly-label">Weekly: <span class="result-label">0.00</span></label>
-                            <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
-                            <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
-                            <label id="emitters-label">Per Emitter GPM: <span class="result-label">0.00</span></label>
-                            <label id="emitters-oz-label">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
+                            <label id="yearly-label" class:"prevent-select">Yearly: <span id="yearly" class="result-label">0.00</span></label>
+                            <label id="monthly-label" class:"prevent-select">Monthly: <span id="monthly" class="result-label">0.00</span></label>
+                            <label id="weekly-label" class:"prevent-select">Weekly: <span class="result-label">0.00</span></label>
+                            <label id="runtime-label" class:"prevent-select">Per Runtime: <span class="result-label">0.00</span></label>
+                            <label id="minutes-label" class:"prevent-select">Per Minute:  <span class="result-label">0.00</span></label>
+                            <label id="emitters-label" class:"prevent-select">Per Emitter GPM: <span class="result-label">0.00</span></label>
+                            <label id="emitters-oz-label class:"prevent-select"">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
                           </div>
                       
                           <!-- TEXT INPUT -->
