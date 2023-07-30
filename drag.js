@@ -46,7 +46,7 @@ document.addEventListener('dragover', (e)=> {
 
 document.addEventListener('dragenter', (e)=> {
     e.preventDefault();
-    if(e.target.nodeName === "UL") {
+    if(e.target.nodeName === "UL" && e.target.hasAttribute('id')) {
         e.target.style.backgroundColor = "rgba(0,0,0,0.3)"
     }
     
@@ -54,13 +54,13 @@ document.addEventListener('dragenter', (e)=> {
 
 document.addEventListener('dragleave', (e)=> {
     e.preventDefault();
-    if(e.target.nodeName === "UL") {
+    if(e.target.nodeName === "UL" && e.target.hasAttribute('id')) {
         e.target.style.backgroundColor = "rgba(0,0,0,0.2)"
     }
 })
 
 document.addEventListener('drop', (e)=> {
-    if(e.target.nodeName === "UL") {
+    if(e.target.nodeName === "UL" && e.target.hasAttribute('id')) {
         // zoneList = e.target
         e.target.append(draggedItem)
         // zoneList = null;
