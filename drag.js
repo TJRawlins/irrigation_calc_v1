@@ -66,7 +66,6 @@ document.addEventListener('drop', (e)=> {
         // zoneList = null;
         e.target.style.backgroundColor = "rgba(128, 128, 128, 0.449)"
 
-
         
     } else {
 

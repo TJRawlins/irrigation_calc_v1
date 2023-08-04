@@ -24,7 +24,6 @@ const deleteZoneBtn = document.getElementById("delete-zone")
 const dontDeleteZoneBtn = document.getElementById("dont-delete-zone")
 
 
-
 /* -------------- GET TARGET ELEMENT -------------- */
 
 let targetEl = null;

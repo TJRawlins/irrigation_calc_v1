@@ -42,8 +42,6 @@ body::before {
   width: 100%;
   height: 100%;
   opacity: 0.2;
-  /* background-image: url(img/orange1.jpg); */
-  /* background-image: url(img/orange2.jpg); */
   background-image: url(img/forest-vector3.jpg);
   /* background-image: url("https://source.unsplash.com/random/1920x1080/?forest"); */
   background-repeat: no-repeat;
