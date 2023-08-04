@@ -47,7 +47,7 @@ document.addEventListener('dragover', (e)=> {
 document.addEventListener('dragenter', (e)=> {
     e.preventDefault();
     if(e.target.nodeName === "UL" && e.target.hasAttribute('id')) {
-        e.target.style.backgroundColor = "rgba(0,0,0,0.3)"
+        e.target.style.backgroundColor = "rgba(128, 128, 128, 0.4)"
     }
     
 })
@@ -55,7 +55,7 @@ document.addEventListener('dragenter', (e)=> {
 document.addEventListener('dragleave', (e)=> {
     e.preventDefault();
     if(e.target.nodeName === "UL" && e.target.hasAttribute('id')) {
-        e.target.style.backgroundColor = "rgba(0,0,0,0.2)"
+        e.target.style.backgroundColor = "rgba(128, 128, 128, 0.449)"
     }
 })
 
@@ -64,7 +64,7 @@ document.addEventListener('drop', (e)=> {
         // zoneList = e.target
         e.target.append(draggedItem)
         // zoneList = null;
-        e.target.style.backgroundColor = "rgba(0,0,0,0.2)"
+        e.target.style.backgroundColor = "rgba(128, 128, 128, 0.449)"
 
 
         

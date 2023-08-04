@@ -154,19 +154,21 @@ addNameBtn.addEventListener("click", () => {
                             <label id="monthly-label" class:"prevent-select">Monthly: <span id="monthly" class="result-label">0.00</span></label>
                             <label id="weekly-label" class:"prevent-select">Weekly: <span class="result-label">0.00</span></label>
                             <label id="runtime-label" class:"prevent-select">Per Runtime: <span class="result-label">0.00</span></label>
-                            <label id="minutes-label" class:"prevent-select">Per Minute:  <span class="result-label">0.00</span></label>
+                            <label id="minutes-label" class:"prevent-select">Per Minute:  <span class="result-label">0.00</span><span class="result-label-title">Adjustable Emitter:</span></label>
                             <label id="emitters-label" class:"prevent-select">Per Emitter GPM: <span class="result-label">0.00</span></label>
-                            <label id="emitters-oz-label class:"prevent-select"">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
+                            <label id="emitters-oz-label" class:"prevent-select">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
+                            <label id="required-runtime-label" class:"prevent-select">Required Runtime: <span class="result-label">0.00</span><span class="result-label-title">Set GPH Emitter:</span></label>
                           </div>
                       
                           <!-- TEXT INPUT -->
                           <div class="input-container">
                             <div id="text-input">
-                              <input type="number" placeholder="Gallons per week per plant..." class="input-field" id="gallons-input" required/>
-                              <input type="number" placeholder="Emitter count per plant..." class="input-field" id="emitters-input" required/>
-                              <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
-                              <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input" required/>
-                              <input type="number" placeholder="Times per week..." class="input-field" id="times-input" required/>
+                              <input type="number" placeholder="Gallons per week per plant..." class="input-field prevent-select" id="gallons-input" required/>
+                              <input type="number" placeholder="Emitter count per plant..." class="input-field prevent-select" id="emitters-input" required/>
+                              <input type="number" placeholder="Plant count..." class="input-field prevent-select" id="trees-input" required/>
+                              <input type="number" placeholder="Runtime minutes..." class="input-field prevent-select" id="minutes-input" required/>
+                              <input type="number" placeholder="Times per week..." class="input-field prevent-select" id="times-input" required/>
+                              <input type="number" placeholder="Emitter flow rate (GPH)" class="input-field prevent-select" id="flowrate-input" required/>
                             </div>
                             <div class="radio-group">
                               <label class="radio">
@@ -194,6 +196,7 @@ addNameBtn.addEventListener("click", () => {
                               <div class="saved-input-field"></div><label>Plant Ct.</label>
                               <div class="saved-input-field"></div><label>Minutes</label>
                               <div class="saved-input-field"></div><label>Per week</label>
+                              <div class="saved-input-field">0</div><label>Emitter flow rate GPH</label>
                               <div class="saved-edit">CLICK TO EDIT</div>
                             </div>
                           </div>
@@ -312,11 +315,12 @@ document.addEventListener("click", ()=> {
   /* -------------- CALCULATE --------------- */
   if(targetEl.classList.contains('fa-calculator')) {
   
-    let entryGph = parseFloat(targetContainer.getElementsByClassName('input-field')[0].value).toFixed(2);
+    let entryGPW = parseFloat(targetContainer.getElementsByClassName('input-field')[0].value).toFixed(2);
     let entryEmit = parseFloat(targetContainer.getElementsByClassName('input-field')[1].value).toFixed(2);
     let entryTrees = parseFloat(targetContainer.getElementsByClassName('input-field')[2].value).toFixed(2);
     let entryMins = parseFloat(targetContainer.getElementsByClassName('input-field')[3].value).toFixed(2);
     let entryTimes = parseFloat(targetContainer.getElementsByClassName('input-field')[4].value).toFixed(2);
+    let entryFlowRate = parseFloat(targetContainer.getElementsByClassName('input-field')[5].value).toFixed(2);
 
     // INPUT VARIABLE LIST
     const input = [];
@@ -325,6 +329,7 @@ document.addEventListener("click", ()=> {
     input[2] = targetContainer.getElementsByClassName('input-field')[2].value;
     input[3] = targetContainer.getElementsByClassName('input-field')[3].value;
     input[4] = targetContainer.getElementsByClassName('input-field')[4].value;
+    input[5] = targetContainer.getElementsByClassName('input-field')[5].value;
 
     // RADIO BUTTONS LIST
     const radioBtn = [];
@@ -357,19 +362,34 @@ document.addEventListener("click", ()=> {
 
       // ADD CALCULATION VALUES TO RESULTS CONTAINER FIELDS
       // Year 
-      targetContainer.getElementsByClassName('result-label')[0].textContent = parseFloat((entryGph * entryTrees) * 52).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[0].textContent = parseFloat((entryGPW * entryTrees) * 52).toFixed(2);
       // Month
-      targetContainer.getElementsByClassName('result-label')[1].textContent  = parseFloat((entryGph * entryTrees) * 4).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[1].textContent  = parseFloat((entryGPW * entryTrees) * 4).toFixed(2);
       // Week
-      targetContainer.getElementsByClassName('result-label')[2].textContent  = parseFloat(entryGph * entryTrees).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[2].textContent  = parseFloat(entryGPW * entryTrees).toFixed(2);
       // Runtime
-      targetContainer.getElementsByClassName('result-label')[3].textContent  = parseFloat((entryGph * entryTrees) / entryTimes).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[3].textContent  = parseFloat((entryGPW * entryTrees) / entryTimes).toFixed(2);
       // Min
-      targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat(((entryGph * entryTrees) / entryTimes) / entryMins).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[4].textContent  = parseFloat(((entryGPW * entryTrees) / entryTimes) / entryMins).toFixed(2);
       // Emitters
-      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat(((entryGph / entryTimes) / entryMins) / entryEmit).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[5].textContent  = parseFloat(((entryGPW / entryTimes) / entryMins) / entryEmit).toFixed(2);
       // Emitters OZ
-      targetContainer.getElementsByClassName('result-label')[6].textContent  = parseFloat(((((entryGph / entryTimes) / entryMins) / entryEmit)*128)/4).toFixed(2);
+      targetContainer.getElementsByClassName('result-label')[6].textContent  = parseFloat(((((entryGPW / entryTimes) / entryMins) / entryEmit)*128)/4).toFixed(2);
+      // Flow Rate GPH
+      if(entryFlowRate == 0) {
+        targetContainer.getElementsByClassName('result-label')[7].textContent  = "None"
+      } else {
+        let totalMins;
+        let num = parseFloat((((entryGPW / entryTimes) / entryEmit) / entryFlowRate)).toFixed(2)
+        let hours = Math.floor(num)
+        let getDecimalVal = num.toString().indexOf(".");      
+        let minutes = num.toString().substring(getDecimalVal+1);
+        minutes = Number("."+minutes)
+        minutes = Math.floor(minutes * 60)
+        totalMins = (hours * 60) + minutes
+        console.log(totalMins)
+        targetContainer.getElementsByClassName('result-label')[7].textContent  = `${hours}hrs : ${minutes}mins (${totalMins})`;
+      }
       
 
       // ADD INPUT VALUES TO SAVED CONTAINER FIELDS
@@ -378,6 +398,7 @@ document.addEventListener("click", ()=> {
       targetContainer.getElementsByClassName('saved-input-field')[2].innerHTML = targetContainer.getElementsByClassName('input-field')[2].value
       targetContainer.getElementsByClassName('saved-input-field')[3].innerHTML = targetContainer.getElementsByClassName('input-field')[3].value
       targetContainer.getElementsByClassName('saved-input-field')[4].innerHTML = targetContainer.getElementsByClassName('input-field')[4].value
+      targetContainer.getElementsByClassName('saved-input-field')[5].innerHTML = targetContainer.getElementsByClassName('input-field')[5].value
 
       // ADD TREE COUNT TO PLANT ICON
       let plantCount = targetContainer.getElementsByClassName('plant-count')[0]

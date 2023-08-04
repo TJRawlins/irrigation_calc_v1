@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/8dfc375738.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style2.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -77,7 +78,7 @@
     <div class="main-container">
 
       <!-- ZONES -->
-      <!-- <div class="zone">
+      <div class="zone">
         <h1 class="zone-name">Zone 1<i class="fa-solid fa-pencil"></i></h1>
         <div class="zone-edit-wrapper">
           <input type="text" class="zone-edit" placeholder="Enter zone name..." require><button class="zone-btn">Save</button>
@@ -109,9 +110,10 @@
                     <label id="monthly-label">Monthly: <span id="monthly" class="result-label">0.00</span></label>
                     <label id="weekly-label">Weekly: <span class="result-label">0.00</span></label>
                     <label id="runtime-label">Per Runtime: <span class="result-label">0.00</span></label>
-                    <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span></label>
+                    <label id="minutes-label">Per Minute:  <span class="result-label">0.00</span> <span class="result-label-title">Adjustable Emitter</span></label>
                     <label id="emitters-label">Per Emitter GPM: <span class="result-label">0.00</span></label>
                     <label id="emitters-oz-label">Per Emitter OZ per 15s: <span class="result-label">0.00</span></label>
+                    <label id="emitters-oz-label">Required Runtime: <span class="result-label">0.00</span> <span class="result-label-title">Flow Rate GPH Emitter</span></label>
                   </div>
                   <div class="input-container">
                     <div id="text-input">
@@ -120,6 +122,7 @@
                       <input type="number" placeholder="Plant count..." class="input-field" id="trees-input"/>
                       <input type="number" placeholder="Runtime minutes..." class="input-field" id="minutes-input"/>
                       <input type="number" placeholder="Times per week..." class="input-field" id="times-input"/>
+                      <input type="number" placeholder="Emitter flow rate (GPH)" class="input-field" id="flowrate-input"/>
                     </div>
                     <div class="radio-group">
                       <label class="radio">
@@ -145,6 +148,7 @@
                       <div class="saved-input-field">0</div><label>Plant Ct.</label>
                       <div class="saved-input-field">0</div><label>Minutes</label>
                       <div class="saved-input-field">0</div><label>Per week</label>
+                      <div class="saved-input-field">0</div><label>Emitter flow rate</label>
                       <div class="saved-edit">CLICK TO EDIT</div>
                     </div>
                   </div>
@@ -164,7 +168,7 @@
             </li>
           </ul>
         </div>
-      </div> -->
+      </div>
 
     </div> <!-- MAIN CONTAINER END -->
     <script src="script.js"></script>
