@@ -4,7 +4,7 @@
   --gradient-primary: rgb(14, 64, 122);
   --gradient-secondary: rgb(39, 188, 199);
   --button: #c5c5c5;
-  --button-hover: #1a6c92;
+  --button-hover: #1e7096;
   --button-hover-gray: #aaaaaa;
   --text-primary-color: rgb(255, 255, 255);
   --text-secondary-color: rgb(192, 192, 192);
@@ -499,6 +499,7 @@ span.result-label-title {
   background-color: var(--bg-secondary);
   border-radius: 5px;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px 0px;
   cursor: pointer;
 }
 

@@ -21,7 +21,6 @@
 
 body {
   background-image: radial-gradient(rgba(77, 131, 148, 0.705) 25%, rgba(10, 10, 10, 0.301)),url('img/forest-vector.jpg');
-  /* background-image: url('img/forest-vector.jpg'); */
   width: 100%;
   background-size: cover;
   color: var(--text-primary-color);
@@ -142,8 +141,11 @@ body {
   min-height: 100px;
   padding: 1rem;
   background-color: rgba(0,0,0,0.2);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
   border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-right: 2px solid rgba(255, 255, 255, .2);
+  border-bottom: 2px solid rgba(255, 255, 255, .2);
 }
 
 
@@ -157,6 +159,7 @@ body {
   cursor: pointer;
   padding-left: 0.5rem;
   width: fit-content;
+  text-shadow: 3px 3px 5px #0000002b;
 }
 
 .zone h1 i.fa-pencil {
@@ -256,7 +259,7 @@ body {
 
 .card-container {
   position: relative;
-  width: 300px;
+  width: 350px;
   background-color: #333;
   padding: 20px;
   margin: 0.5rem;
@@ -363,6 +366,18 @@ span.plant-count {
   color: #fff;
 }
 
+span.result-label-title {
+  position: absolute;
+  top: -27px;
+  left: 5px;
+  color: var(--gradient-secondary) !important;
+  font-size: 1rem;
+}
+
+#minutes-label, #required-runtime-label {
+  margin-top: 25px;
+}
+
 /* RESULTS TOOLTIPS */
 
 .results-container label:hover::before {
@@ -377,26 +392,39 @@ span.plant-count {
   font-size: 0.7rem;
 }
 
+
+
 #yearly-label:hover::before {
   content: "Total gallons per year (52 weeks)";
+  z-index: 5;
 }
 #monthly-label:hover::before {
   content: "Total gallons per month (4 weeks)";
+  z-index: 5;
 }
 #weekly-label:hover::before {
   content: "Total gallons per week";
+  z-index: 5;
 }
 #runtime-label:hover::before {
   content: "Total gallons per runtime";
+  z-index: 5;
 }
 #minutes-label:hover::before {
   content: "Total gallons per minute";
+  z-index: 5;
 }
 #emitters-label:hover::before {
   content: "Gallons per minute per emitter per plant";
+  z-index: 5;
 }
 #emitters-oz-label:hover::before {
   content: "Measurement for each emitter in ounces";
+  z-index: 5;
+}
+#required-runtime-label:hover::before {
+  content: "Runtime needed based on set GPH emitter you entered";
+  z-index: 5;
 }
 
 

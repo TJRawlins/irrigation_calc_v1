@@ -226,10 +226,36 @@ setInterval(()=> {
     monthTotal = Number(monthly[i].innerHTML) + monthTotal
     yearTotal = Number(yearly[i].innerHTML) + yearTotal
     plantTotal = Number(plants[i].innerHTML) + plantTotal
-  totalMonth.innerHTML = monthTotal 
-  totalYear.innerHTML = yearTotal
-  totalPlants.innerHTML = plantTotal
-}
+    totalMonth.innerHTML = monthTotal 
+    totalYear.innerHTML = yearTotal
+    totalPlants.innerHTML = plantTotal
+  }
+}, 2000);
+
+// CALCULATE TOTAL ZONE
+setInterval(()=> {
+  let zoneCardList = document.querySelectorAll("#card-list")
+  for(let i = 0; i < zoneCardList.length; i++){
+    let zone = zoneCardList[i].parentElement
+    let totalMonthZone = zone.querySelector("#total-month");
+    let totalYearZone = zone.querySelector("#total-year");;
+    let totalPlantsZone = zone.querySelector("#total-plants");;
+    let yearly = zoneCardList[i].querySelectorAll("#yearly")
+    let monthly = zoneCardList[i].querySelectorAll("#monthly")
+    let plants = zoneCardList[i].querySelectorAll(".plant-count")
+    let monthTotal = 0;
+    let yearTotal = 0;
+    let plantTotal = 0;
+
+    for(let i = 0; i < monthly.length; i++) {
+      monthTotal = Number(monthly[i].innerHTML) + monthTotal
+      yearTotal = Number(yearly[i].innerHTML) + yearTotal
+      plantTotal = Number(plants[i].innerHTML) + plantTotal
+      totalMonthZone.innerHTML = monthTotal 
+      totalYearZone.innerHTML = yearTotal
+      totalPlantsZone.innerHTML = plantTotal
+    }
+  }
 }, 2000);
 
 
