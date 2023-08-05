@@ -41,8 +41,13 @@ body::before {
   width: 100%;
   height: 100%;
   opacity: 0.2;
+<<<<<<< HEAD
   background-image: url(img/forest-vector2.jpg);
   /* background-image: url("https://source.unsplash.com/random/1920x1080/?forest"); */
+=======
+  /* background-image: url(img/forest-vector3.jpg); */
+  background-image: url("https://source.unsplash.com/random/1920x1080/?forest");
+>>>>>>> 9a53d9379df64c6ebc2d7f5fc65d7db835a67a40
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
@@ -492,6 +497,15 @@ span.result-label-title {
 
 /* INPUT SAVED CONTAINER */
 
+/* .input-container.saved {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 8px 0px;
+  cursor: pointer;
+} */
 .input-container.saved {
   position: relative;
   display: flex;
@@ -535,7 +549,7 @@ span.result-label-title {
   width: 100%;
 }
 
-.input-container.saved #saved-input .saved-input-field {
+/* .input-container.saved #saved-input .saved-input-field {
   position: relative;
   display: flex;
   justify-content: left;
@@ -544,9 +558,35 @@ span.result-label-title {
   font-family: "Chakra Petch", sans-serif;
   font-size: 16px;
   font-weight: 800;
+<<<<<<< HEAD
+=======
+  border-bottom: 2px solid var(--gradient-secondary);
+} */
+.input-container.saved #saved-input .saved-input-field {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  color: var(--bg-secondary);
+  width: 50%;
+  font-size: 16px;
+  font-weight: 800;
+>>>>>>> 9a53d9379df64c6ebc2d7f5fc65d7db835a67a40
   border-bottom: 1px solid var(--button-hover-gray);
 }
 
+/* .input-container.saved #saved-input label {
+  display: flex;
+  justify-content: right;
+  align-content: end;
+  flex-wrap: wrap;
+  width: 50%;
+  color: var(--bg-primary);
+  font-size: 0.8rem;
+  font-weight: 100;
+<<<<<<< HEAD
+=======
+  border-bottom: 2px solid var(--gradient-secondary);
+} */
 .input-container.saved #saved-input label {
   display: flex;
   justify-content: right;
@@ -556,6 +596,7 @@ span.result-label-title {
   color: var(--bg-primary);
   font-size: 0.8rem;
   font-weight: 100;
+>>>>>>> 9a53d9379df64c6ebc2d7f5fc65d7db835a67a40
   border-bottom: 1px solid var(--button-hover-gray);
 }
 
